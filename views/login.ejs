@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include("./common/navbar-main") %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div class="signup">
+      <form action="/api/login" method="POST">
+        <div class="form-control">
+          <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-control">
+          <input type="password" name="password" placeholder="Password" required>
+        </div>
+        <input type="submit" value="Send" class="btn btn-primary">
+      </form>
+    </div>
+  </body>
+</html>
