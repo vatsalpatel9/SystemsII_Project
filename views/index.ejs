@@ -1,13 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <%- include("./common/navbar-main") %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p>test</p>
-  </body>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+</head>
+
+<body>
+  <!--Add NavBar-->
+  <%- include("./common/navbar-main.ejs")%>
+
+  <!-- Showcase -->
+  <section class="showcase">
+    <div class="container grid">
+      <div class="showcase-text">
+        <h1>Placeholder</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In leo est, pretium eu justo bibendum, hendrerit
+          pharetra magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a href="features.html" class="btn btn-outline">Read More</a>
+      </div>
+
+      <div class="showcase-form card">
+        <h2>Reserve Stall</h2>
+        <form>
+          <div class="form-control">
+            <input type="text" name="name" placeholder="First Name" required>
+          </div>
+          <div class="form-control">
+            <input type="text" name="name" placeholder="Last Name" required>
+          </div>
+          <div class="form-control">
+            <input type="phone" name="phone" placeholder="Phone" required>
+          </div>
+          <div class="form-control">
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+          <input type="submit" value="Send" class="btn btn-primary">
+        </form>
+      </div>
+    </div>
+  </section>
+
+</body>
+
 </html>
