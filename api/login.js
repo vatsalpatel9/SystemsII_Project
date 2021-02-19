@@ -12,7 +12,7 @@ router.post('/', async(req, res) => {
         bcrypt.compare(password, useremail.password, function(err, result) {
             if (result) {
                 console.log(email, password);
-                req.session.user = useremail.firstname;
+                req.session.user = useremail._id;
                 console.log(req.session);
                 res.redirect('/');
             } else {

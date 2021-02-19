@@ -1,14 +1,17 @@
 const express = require('express');
 const session = require('express-session');
 const router = express.Router();
+const Register = require('../models/registers');
 
 /* GET home page. */
-router.get('/', function(req, res) {
+router.get('/', async function(req, res) {
   if(!req.session.user){
     console.log(req.session);
     res.render('index', {title: 'hello'});
   }else{
-    res.render('customer/index', { title: req.session.user});
+      const usrId = req.session.user;
+      const userName = await Register.findOne({_id:usrId});
+      res.render('customer/index', { title: userName.firstname});
   }
 });
 

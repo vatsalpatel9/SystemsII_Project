@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'dch1FDJDsn!dhf',
     resave: true,
-    saveUninitialized: false,
+    saveUninitialized: true,
     rolling: true,
     store: new MongoStore({
         url: 'mongodb+srv://appUser:8rod40huijz75698@cluster0.rqilf.mongodb.net/sessionData?retryWrites=true&w=majority',
