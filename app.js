@@ -21,6 +21,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     rolling: true,
+    httpOnly: true,
     store: new MongoStore({
         url: 'mongodb+srv://appUser:8rod40huijz75698@cluster0.rqilf.mongodb.net/sessionData?retryWrites=true&w=majority',
     }),
@@ -53,6 +54,11 @@ app.use('/rm-session', (req, res) => {
 app.use((req, res) => {
     res.sendFile(path.resolve('public/html/404.html'));
 })
+
+app.use(function(req, res, next) {
+    res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+    next();
+  });
 
 // Listen on port
 app.listen(port, () => console.log(`Listening on port ${port}.`));

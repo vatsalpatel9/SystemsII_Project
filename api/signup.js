@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
             })
 
             const registered = await signUp.save();
-            res.send(201).render(index);
+            res.redirect('/');
         }else{
             res.send("password are not matching")
         }
