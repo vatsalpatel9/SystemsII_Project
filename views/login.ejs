@@ -6,9 +6,10 @@
   </head>
   <body>
     <%- include("./common/navbar-main") %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <div class="signup">
+    
+    <div class="showcase-form card" style="margin: 0 auto; height: 310px">
+      <h1 style="text-align: center"><%= title %></h1>
+      <p style="text-align: center">Welcome to <%= title %></p>
       <form action="/api/login" method="POST">
         <div class="form-control">
           <input type="email" name="email" placeholder="Email" required>
