@@ -1,57 +1,98 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
+  </head>
 
-<head>
-  <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
-    crossorigin="anonymous" />
-</head>
+  <body>
+    <!--Add NavBar-->
+    <%- include("./common/navbar-main.ejs")%>
 
-<body>
-  <!--Add NavBar-->
-  <%- include("./common/navbar-main.ejs")%>
+    <!-- Showcase -->
+    <section class="showcase">
+      <div class="container grid">
+        <div class="showcase-text">
+          <h1>What We Do</h1>
+          <p>
+            Hoof Hearted Stables offers horse lodging and care. Our rates are
+            250/month for pasture horses, and 300/month for stabled horses. This
+            includes the cost of grain and hay. All horses are groomed weekly
+            and exercise in our ten-acre fields daily.
+          </p>
+          <a href="#about" class="btn btn-outline">Read More</a>
+        </div>
 
-  <!-- Showcase -->
-  <section class="showcase">
-    <div class="container grid">
-      <div class="showcase-text">
-        <h1>What We Do</h1>
-        <p>Hoof Hearted Stables offers horse lodging and care. Our rates are 250/month for pasture horses, and 300/month for stabled horses. This includes the cost of grain and hay. All horses are groomed weekly and exercise in our ten-acre fields daily.</p>
-        <a href="#about" class="btn btn-outline">Read More</a>
+        <div class="showcase-form card">
+          <h2>Create Account</h2>
+          <form>
+            <div class="form-control">
+              <input
+                type="text"
+                name="name"
+                placeholder="First Name"
+                required
+              />
+            </div>
+            <div class="form-control">
+              <input type="text" name="name" placeholder="Last Name" required />
+            </div>
+            <div class="form-control">
+              <input type="phone" name="phone" placeholder="Phone" required />
+            </div>
+            <div class="form-control">
+              <input type="email" name="email" placeholder="Email" required />
+            </div>
+            <div class="form-control">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div class="form-control">
+              <input
+                type="password"
+                name="confirmpassword"
+                placeholder="Confirm Password"
+                required
+              />
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary" />
+          </form>
+        </div>
       </div>
+    </section>
 
-      <div class="showcase-form card">
-        <h2>Create Account</h2>
-        <form>
-          <div class="form-control">
-            <input type="text" name="name" placeholder="First Name" required>
-          </div>
-          <div class="form-control">
-            <input type="text" name="name" placeholder="Last Name" required>
-          </div>
-          <div class="form-control">
-            <input type="phone" name="phone" placeholder="Phone" required>
-          </div>
-          <div class="form-control">
-            <input type="email" name="email" placeholder="Email" required>
-          </div>
-          <div class="form-control">
-            <input type="password" name="password" placeholder="Password" required>
-          </div>
-          <div class="form-control">
-            <input type="password" name="confirmpassword" placeholder="Confirm Password" required>
-          </div>
-          <input type="submit" value="Submit" class="btn btn-primary">
-        </form>
+    <!--Services Page-->
+    <section class="showcase">
+      <div class="anchor_offset services" id="services">
+        <h1>Services</h1>
       </div>
-    </div>
-  </section>
+    </section>
 
-</body>
+    <!--About Page-->
+    <section class="showcase">
+      <div class="anchor_offset about" id="about">
+        <h1>About</h1>
+      </div>
+    </section>
 
+    <!--Contact Page-->
+    <section class="showcase">
+      <div class="anchor_offset contact" id="contact">
+        <h1>Contact</h1>
+      </div>
+    </section>
+  </body>
 </html>

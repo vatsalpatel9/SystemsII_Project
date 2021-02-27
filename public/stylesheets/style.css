@@ -42,14 +42,15 @@ img {
 
 /* Showcase */
 .showcase {
-    height: 400px;
+    height: 100vh;
     background-color: var(--primary-color);
     color: #fff;
-    position: relative;
+    scroll-margin-top: inherit;
 }
 
 .showcase h1 {
     font-size: 40px;
+    margin: 0;
 }
 
 .showcase p {
@@ -63,13 +64,12 @@ img {
 }
 
 .showcase-form {
-    position: relative;
-    top: 60px;
-    height: 400px;
+    height: 100%;
     width: 400px;
-    padding: 40px;
-    z-index: 100;
     justify-self: flex-end;
+    padding: 40px;
+    position: relative;
+    top: 60px;  
 }
 
 .showcase-form .form-control {
@@ -78,7 +78,8 @@ img {
 
 .showcase-form input[type='text'],
 .showcase-form input[type='email'],
-.showcase-form input[type='phone'] {
+.showcase-form input[type='phone'],
+.showcase-form input[type='password'] {
     border: 0;
     border-bottom: 1px solid #b4becb;
     width: 100%;
@@ -88,21 +89,6 @@ img {
 
 .showcase-form input:focus {
     outline: none;
-}
-
-.showcase::before,
-.showcase::after {
-    content: '';
-    position: absolute;
-    height: 100px;
-    bottom: -70px;
-    right: 0;
-    left: 0;
-    background: #fff;
-    transform: skewY(-3deg);
-    -webkit-transform: skewY(-3deg);
-    -moz-transform: skewY(-3deg);
-    -ms-transform: skewY(-3deg);
 }
 
 /* Utilities */
@@ -158,9 +144,17 @@ img {
     gap: 20px;
     justify-content: center;
     align-items: center;
-    height: 100%;
 }
 
 .grid-3 {
     grid-template-columns: repeat(3, 1fr);
+}
+
+.anchor_offset::before {
+    display: block;
+    content: ' ';
+    height: 70px; 
+    margin-top: 0;
+    width: 100%;
+    visibility: hidden;
 }
