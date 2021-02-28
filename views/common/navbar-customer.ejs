@@ -1,41 +1,14 @@
 <!--Nav Bar-->
-<div class="navbar">
+<div class="navbar" id="navbar">
     <div class="container flex">
         <h1 class="logo">Hoof Hearted Stable</h1>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/customer/book">Book</a></li>
-                <li><a href="/customer/contact">Contact</a></li>
-                <li><a href="/rm-session">LogOut</a></li>
+                <li><a href="/customer/index" class="menu">Home</a></li>
+                <li><a href="/customer/book" class="menu">Book</a></li>
+                <li><a href="/customer/contact" class="menu">Contact</a></li>
+                <li><a href="/rm-session" class="menu">LogOut</a></li>
             </ul>
         </nav>
     </div>
 </div>
-
-<style>
-    /* Navbar */
-.navbar {
-    background-color: var(--primary-color);
-    color: #fff;
-    height: 70px;
-}
-
-.navbar ul {
-    display: flex;
-}
-
-.navbar a {
-    color: #fff;
-    padding: 10px;
-    margin: 0 5px;
-}
-
-.navbar a:hover {
-    border-bottom: 2px #fff solid;
-}
-
-.navbar .flex {
-    justify-content: space-between;
-}
-</style>

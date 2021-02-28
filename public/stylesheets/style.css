@@ -91,6 +91,43 @@ img {
     outline: none;
 }
 
+/* Navbar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: sticky;
+    height: 70px;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar a {
+    color: #fff;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.navbar a:hover {
+    border-bottom: 2px #fff solid;
+}
+
+.navbar .flex {
+    justify-content: space-between;
+}
+
+.navbar a.active {
+    border-bottom: 2px #fff solid;
+}
+
+.logo {
+    color: honeydew;
+}
+
 /* Utilities */
 .container {
     max-width: 1100px;
