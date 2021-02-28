@@ -29,3 +29,20 @@ $(document).ready(function(){
         });
     });
 });
+
+
+
+$(function(){
+    var path = window.location.pathname;
+    console.log(path);
+    $(".navbar a[href='"+path+"']").addClass("active");
+});
+
+/*
+$(function(){
+  $('a').each(function() {
+    if ($(this).prop('href') == window.location.href) {
+      $(this).addClass('active');
+    }
+  });
+});*/
