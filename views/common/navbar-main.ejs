@@ -4,10 +4,10 @@
         <h1 class="logo">Hoof Hearted Stables</h1>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/#services">Services</a></li>
-                <li><a href="/#about">About</a></li>
-                <li><a href="/#contact">Contact</a></li>
+                <li><a href="/" class="menu active" data-scroll="home">Home</a></li>
+                <li><a href="/#services" class="menu" data-scroll="services">Services</a></li>
+                <li><a href="/#about" class="menu" data-scroll="about">About</a></li>
+                <li><a href="/#contact" class="menu" data-scroll="contact">Contact</a></li>
                 <li><a href="/signup">SignUp</a></li>
                 <li><a href="/login">LogIn</a></li>
             </ul>
@@ -31,7 +31,7 @@
     display: flex;
 }
 
-.navbar a {
+.navbar a{
     color: #fff;
     padding: 10px;
     margin: 0 5px;
@@ -43,6 +43,10 @@
 
 .navbar .flex {
     justify-content: space-between;
+}
+
+.navbar a.active{
+    border-bottom: 2px #fff solid;
 }
 
 .logo{

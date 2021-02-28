@@ -12,6 +12,10 @@
       integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
       crossorigin="anonymous"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"></script>
+    <script src="/javascripts/script.js"></script>
   </head>
 
   <body>
@@ -19,7 +23,7 @@
     <%- include("./common/navbar-main.ejs")%>
 
     <!-- Showcase -->
-    <section class="showcase">
+    <section class="showcase" id="home">
       <div class="container grid">
         <div class="showcase-text">
           <h1>What We Do</h1>
@@ -75,22 +79,22 @@
     </section>
 
     <!--Services Page-->
-    <section class="showcase">
-      <div class="anchor_offset services" id="services">
+    <section class="showcase" id="services">
+      <div class="anchor_offset services">
         <h1>Services</h1>
       </div>
     </section>
 
     <!--About Page-->
-    <section class="showcase">
-      <div class="anchor_offset about" id="about">
+    <section class="showcase" id="about">
+      <div class="anchor_offset about">
         <h1>About</h1>
       </div>
     </section>
 
     <!--Contact Page-->
-    <section class="showcase">
-      <div class="anchor_offset contact" id="contact">
+    <section class="showcase" id="contact">
+      <div class="anchor_offset contact">
         <h1>Contact</h1>
       </div>
     </section>
