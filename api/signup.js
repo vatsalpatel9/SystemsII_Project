@@ -19,7 +19,9 @@ router.post('/', async (req, res) => {
             })
 
             const registered = await signUp.save();
-            res.redirect('/');
+            req.session.user = registered._id;
+            console.log(req.session.user);
+            res.redirect('/customer/home');
         }else{
             res.send("password are not matching")
         }

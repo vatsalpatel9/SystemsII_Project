@@ -1,7 +1,5 @@
 const express = require('express');
-const session = require('express-session');
 const router = express.Router();
-const Register = require('../models/registers');
 
 /* GET home page. */
 router.get('/', async function(req, res) {
