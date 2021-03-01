@@ -14,7 +14,7 @@ router.post('/', async(req, res) => {
                 console.log(email, password);
                 req.session.user = useremail._id;
                 console.log(req.session);
-                res.redirect('/');
+                res.redirect('/customer/home');
             } else {
                 res.send("Invaild email or password");
             }
