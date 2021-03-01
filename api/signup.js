@@ -17,7 +17,6 @@ router.post('/', async (req, res) => {
                 phone: req.body.phone,
                 password: bcrypt.hashSync(password, 10)
             })
-
             const registered = await signUp.save();
             req.session.user = registered._id;
             console.log(req.session.user);
@@ -25,7 +24,6 @@ router.post('/', async (req, res) => {
         }else{
             res.send("password are not matching")
         }
-
     }catch (error){
         res.status(400).send(error)
     }
