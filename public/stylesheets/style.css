@@ -96,14 +96,17 @@ img {
     overflow: hidden;
     background-color: #333;
     position: sticky;
-    height: 70px;
+    height: 100%;
     top: 0;
     width: 100%;
     z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.navbar ul {
-    display: flex;
+.navlist li {
+    display: inline-block;
 }
 
 .navbar a {
@@ -116,16 +119,69 @@ img {
     border-bottom: 2px #fff solid;
 }
 
-.navbar .flex {
-    justify-content: space-between;
-}
-
 .navbar a.active {
     border-bottom: 2px #fff solid;
 }
 
 .logo {
     color: honeydew;
+}
+
+.navbar .menuIcon{
+    display: none;
+}
+
+/* Mobile Navbar */
+@media all and (max-width: 1024px) {
+    .navbar{
+        flex-direction: column;
+    }
+
+    .navbar .menuIcon{
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 5px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .navlist{
+        width: 100%;
+        text-align: center;
+        padding-top: 5px;
+        display: none;
+    }
+
+    .navlist li{
+        display: block;
+        padding: 10px 10px;
+        border-top: 1px solid #fff;
+    }
+
+    .navbar h1{
+        width: 100%;
+        padding-left: 10px;
+    }
+
+    .show{
+        display: block;
+    }
+
+    .hide{
+        display: none;
+    }
+}
+
+@media all and (max-width: 414px) {
+    .navbar h1{
+        font-size: 20px;
+    }
+
+    .navbar .menuIcon{
+        font-size: 20px;
+        top: 7px;
+    }
 }
 
 /* Utilities */
