@@ -15,12 +15,13 @@ router.post('/', async (req, res) => {
                 lastname: req.body.lastname,
                 email: req.body.email,
                 phone: req.body.phone,
-                password: bcrypt.hashSync(password, 10)
+                password: bcrypt.hashSync(password, 10),
+                actype: 1
             })
             const registered = await signUp.save();
             req.session.user = registered._id;
             console.log(req.session.user);
-            res.redirect('/customer/home');
+            res.redirect('/');
         }else{
             res.send("password are not matching")
         }

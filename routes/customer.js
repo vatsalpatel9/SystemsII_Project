@@ -4,6 +4,7 @@ const session = require('express-session');
 var router = express.Router();
 const Register = require('../models/registers');
 
+
 function checkSignIn(req, res, next){
    if(req.session.user){
       next();     //If session exists, proceed to page
@@ -14,12 +15,6 @@ function checkSignIn(req, res, next){
       next(err);  //Error, trying to access unauthorized page!
    }
 }
-
-router.get('/home', checkSignIn, async (req, res) => {
-    const usrId = req.session.user;
-    const userName = await Register.findOne({_id:usrId});
-    res.render('customer/index', { title: userName.firstname});
-});
 
 router.get('/book', checkSignIn, async (req, res) => {
     const usrId = req.session.user;

@@ -23,6 +23,10 @@ const registerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    actype: {
+        type: Number,
+        required: true
+    },
 });
 
 //collection
