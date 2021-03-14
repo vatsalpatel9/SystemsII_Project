@@ -16,10 +16,22 @@ function checkSignIn(req, res, next){
    }
 }
 
-router.get('/book', checkSignIn, async (req, res) => {
+router.get('/myhorses', checkSignIn, async (req, res) => {
     const usrId = req.session.user;
     const userName = await Register.findOne({_id:usrId});
-    res.render('customer/book', { title: `book ${userName.firstname}`});
+    res.render('customer/myhorses', { title: `myHorses ${userName.firstname}`});
+});
+
+router.get("/bookings", checkSignIn, async (req, res) => {
+  const usrId = req.session.user;
+  const userName = await Register.findOne({ _id: usrId });
+  res.render("customer/book", { title: `bookings ${userName.firstname}` });
+});
+
+router.get("/account", checkSignIn, async (req, res) => {
+  const usrId = req.session.user;
+  const userName = await Register.findOne({ _id: usrId });
+  res.render("customer/account", { title: `Account of ${userName.firstname}` });
 });
 
 module.exports =router;
