@@ -18,7 +18,7 @@ $(document).ready(function () {
         var link = $(".navbar a");
         var top = $(window).scrollTop();
 
-        $(".showcase").each(function () {
+        $(".sectionIndicator").each(function () {
             var id = $(this).attr("id");
             var height = $(this).height();
             var offset = $(this).offset().top - 150;
@@ -50,10 +50,21 @@ $(function(){
 //Mobile navbar toggle
 $(document).ready(function () {
     $("#toggleBtn").on("click", function () {
-        $("#navlist").toggleClass("show");
+        var mySidebar = document.getElementById("mySidebar");
+       // mySidebar.style.display = "block";
+          if (mySidebar.style.display === "block") {
+            mySidebar.style.display = "none";
+          } else {
+            mySidebar.style.display = "block";
+          }
+       // $("#navlist").toggleClass("show");
     });
 
     $(".menu").on("click", function () {
-        $("#navlist").removeClass("show");
+       var mySidebar = document.getElementById("mySidebar");
+       mySidebar.style.display = "none";
     });
 });
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
