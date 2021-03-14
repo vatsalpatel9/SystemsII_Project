@@ -8,6 +8,31 @@
     <%- include("../common/navbar-customer") %>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <p>test</p>
+      <div class="showcase-form card">
+        <h2>Get Riding Lessons</h2>
+        <form action="/api/signup" method="POST">
+          <div class="form-control">
+            <input type="text" name="firstname" placeholder="First Name" required>
+          </div>
+          <div class="form-control">
+            <input type="text" name="lastname" placeholder="Last Name" required>
+          </div>
+          <div class="form-control">
+            <input type="phone" name="phone" placeholder="Phone" required>
+          </div>
+          <div class="form-control">
+            <input type="text" name="numPeople" placeholder="Number of Riders" required>
+          </div>
+          <div class="form-control">
+            <lable>Pick a Day</lable>
+            <input type="date" name="days" min = "2021-03-12" max="2021-04-12" required>
+          </div>
+          <div class="form-control">
+            <lable>Pick a Time</lable>
+            <input type="time" name="time" min="09:00" max="18:00" required>
+          </div>
+          <input type="submit" value="Let's Ride" class="btn btn-primary">
+        </form>
+      </div>
   </body>
 </html>
