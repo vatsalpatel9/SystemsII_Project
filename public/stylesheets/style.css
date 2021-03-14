@@ -73,12 +73,18 @@ img {
 }
 
 .showcase-form {
-    height: 100%;
     width: 400px;
     justify-self: flex-end;
     padding: 40px;
     position: relative;
     top: 60px;  
+}
+
+.showcase-contact{
+    height: 100vh;
+    color: #000;
+    scroll-margin-top: inherit;
+    overflow: hidden;
 }
 
 .showcase-form .form-control {
@@ -233,7 +239,6 @@ img {
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    margin: 10px;
 }
 
 .btn {
@@ -288,8 +293,36 @@ img {
 }
 
 .overlay {
+    position: relative;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bg-image{
+    background-image: url('/images/Horses.png');
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-text {
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
 }

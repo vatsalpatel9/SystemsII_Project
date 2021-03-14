@@ -136,20 +136,30 @@
     </section>
 
     <!--Contact Page-->
-    <section class="sectionIndicator showcase" id="contact">
-      <div class="anchor_offset contact">
-        <div class="container">
-          <div style="background-image: url('/images/Horses.png');
-          background-size: cover; height:500px; padding-top:80px;">
-          </div>
-
-          <div class="showcase-form card overlay" style="position: relative; text-align: center; top: -250px;">
-            <h2>Contact</h2>
-            <p>Number: 870-404-2232</p>
-            <p>Email: hoofheartedstables@gmail.com</p>
-          </div> 
-        </div>
-      </div>
+    <section class="sectionIndicator showcase-contact" id="contact">
+      <div class="bg-image"></div>
+       <div class="showcase-form card overlay" style="position: relative;"
+         id="contact">
+         <h3 class="w3-center">CONTACT</h3>
+         <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+         <div style="margin-top:48px">
+           <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i>Arkansas</p>
+           <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +1 870-404-2232</p>
+           <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: hoofheartedstables@gmail.com</p>
+           <br>
+           <form action="/action_page.php" target="_blank">
+             <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
+             <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+             <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
+             <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
+             <p>
+               <button class="w3-button w3-black" type="submit">
+                 <i class="fa fa-paper-plane"></i> SEND MESSAGE
+               </button>
+             </p>
+           </form>
+         </div>
+       </div>
     </section>
   </body>
 </html>
