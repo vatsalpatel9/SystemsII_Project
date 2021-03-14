@@ -3,6 +3,42 @@
   <head>
     <title><%= title %></title>
     <%- include("../common/header")%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script type="text/javascript">
+      var datefield = document.createElement("input")
+      datefield.setAttribute("type", "date")
+      if (datefield.type !=
+        "date") { //if browser doesn't support input type="date", load files for jQuery UI Date Picker
+        document.write(
+          '<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n'
+          )
+        document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"><\/script>\n')
+        document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"><\/script>\n')
+      }
+    </script>
+
+    <script>
+      if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
+        jQuery(function ($) { //on document.ready
+          $('#days').datepicker();
+        })
+      }
+
+      $(document).ready(function () {
+        $(".timepicker").timepicker({
+        timeFormat: "h:mm p",
+        interval: 60,
+        minTime: "10",
+        maxTime: "6:00pm",
+        defaultTime: "0",
+        startTime: "10:00",
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true,
+        });
+      });
+    </script>
   </head>
   <body>
     <%- include("../common/navbar-customer") %>
@@ -38,14 +74,19 @@
             <div class="form-control">
               <input type="text" name="numPeople" placeholder="Number of Riders" required>
             </div>
-            <div class="form-control">
-              <lable>Pick a Day</lable>
-              <input type="date" name="days" min = "2021-03-12" max="2021-04-12" required>
-            </div>
-            <div class="form-control">
-              <lable>Pick a Time</lable>
-              <input type="time" name="time" min="09:00" max="18:00" required>
-            </div>
+           <div class="form-control">
+             <input type="date" name="days" id="days" min="2021-03-12" max="2021-04-12" placeholder="MM/DD/YYYY"
+               required>
+           </div>
+           <div class="parent">
+             <div class="form-control-time-left">
+               <input type="text" class="timepicker" id="startTime" name="time" placeholder="Pick a Start Time"
+                 required>
+             </div>
+             <div class="form-control-time-right">
+               <input type="text" class="timepicker" id="endTime" name="time" placeholder="Pick a End Time" required>
+             </div>
+           </div>
             <input type="submit" value="Let's Ride" class="btn btn-primary">
           </form>
         </div>

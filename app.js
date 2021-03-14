@@ -26,7 +26,7 @@ app.use(session({
         url: 'mongodb+srv://appUser:8rod40huijz75698@cluster0.rqilf.mongodb.net/sessionData?retryWrites=true&w=majority',
     }),
     cookie: {
-        maxAge: 1000 * 60,
+        maxAge: 1000 * 60 * 60,
         secure: false
    }
 }))

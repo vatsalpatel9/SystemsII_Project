@@ -91,10 +91,28 @@ img {
     margin: 30px 0;
 }
 
+.parent{
+    display: inline-flex;
+    margin-bottom: 30px;
+}
+
+.form-control-time-left{
+    float: left;
+    margin-right: 5px;
+}
+
+.form-control-time-right{
+    float: right;
+    margin-left: 5px;
+}
+
 .showcase-form input[type='text'],
 .showcase-form input[type='email'],
 .showcase-form input[type='phone'],
-.showcase-form input[type='password'] {
+.showcase-form input[type='password'],
+.showcase-form input[type='date'],
+.showcase-form input[type='time']
+{
     border: 0;
     border-bottom: 1px solid #b4becb;
     width: 100%;
