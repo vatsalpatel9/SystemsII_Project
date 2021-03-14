@@ -10,10 +10,19 @@
     margin: 0;
 }
 
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Raleway", sans-serif
+}
+
 body {
-    font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-    color: #333;
-    line-height: 1.6;
+
+    line-height: 1.8;
 }
 
 ul {
@@ -42,7 +51,7 @@ img {
 
 /* Showcase */
 .showcase {
-    height: 75vh;
+    height: 100vh;
     background-color: var(--primary-color);
     color: #fff;
     scroll-margin-top: inherit;
@@ -132,7 +141,7 @@ img {
 }
 
 /* Mobile Navbar */
-@media all and (max-width: 1024px) {
+@media all and (max-width: 800px) {
     .navbar{
         flex-direction: column;
     }
