@@ -10,7 +10,7 @@
     <%- include("./common/navbar-main.ejs")%>
 
     <!-- Showcase -->
-    <section class="showcase" id="home">
+    <section class="sectionIndicator showcase" id="home">
       <div class="container grid">
         <div class="showcase-text">
           <h1>What We Do</h1>
@@ -50,63 +50,93 @@
       </div>
     </section>
 
-    <!--Services Page-->
-    <section class="info">
-      <div class="container">
-          <h3 class="info-heading text-center my-1">
-              Horse Lodging and Care
-          </h3>
-
-          <div class="grid grid-3 text-center my-4">
-              <div>
-                  <i class="fas fa-horse-head fa-3x"></i>
-                  <h3>Care</h3>
-                  <p class="text-secondary">All horses groomed weekly and exercise in fields daily</p>
-              </div>
-              <div>
-                  <i class="fas fa-calendar-alt fa-3x"></i>
-                  <h3>Costs</h3>
-                  <p class="text-secondary">$250/month - pasture horses</p>
-                  <p class="text-secondary">$300/month - stabled horses</p>
-              </div>
-              <div>
-                  <i class="fas fa-seedling fa-3x"></i>
-                  <h3>Extra</h3>
-                  <p class="text-secondary">Monthly costs include cost of grain and hay</p>
-              </div>
+    <!--About Page-->
+    <section class="sectionIndicator" id="about">
+      <div class="w3-container" style="padding:128px 16px">
+        <h3 class="w3-center">ABOUT THE COMPANY</h3>
+        <p class="w3-center w3-large">Key features of our company</p>
+          <div class="w3-row-padding w3-center" style="margin-top:64px">
+            <div class="w3-quarter">
+              <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+              <p class="w3-large">Responsive</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore.</p>
+            </div>
+            <div class="w3-quarter">
+              <i class="fa fa-hat-cowboy fa-3x w3-margin-bottom w3-jumbo"></i>
+              <p class="w3-large">Passion</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore.</p>
+            </div>
+            <div class="w3-quarter">
+              <i class="fa fa-horse-head w3-margin-bottom w3-jumbo"></i>
+              <p class="w3-large">Horses</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore.</p>
+            </div>
+            <div class="w3-quarter">
+              <i class="fa fa-hand-holding-medical w3-margin-bottom w3-jumbo"></i>
+              <p class="w3-large">Care</p>
+              <p>All horses groomed weekly and exercise in fields daily</p>
+            </div>
           </div>
       </div>
     </section>
-    
-    <section class="showcase" id="services">
-      <div class="anchor_offset services">
-        <h1>Services</h1>
-        <p>Horse Lodging and Care</p>
-        <p>All horses are groomed weekly and exercise in fields daily</p>
-        <p>$250/month for pasture horses</p>
-        <p>$300/month for stabled horses</p>
-        <p>(Monthly costs include cost of grain and hay)</p>
-        <p>$70/hour for horse riding lessons</p>
-        <p>$100/hour to break horse and keep it trained (Boarding fees not included)</p>
-      </div>
-    </section>
 
-    <!--About Page-->
-    <section class="showcase" id="about">
-      <div class="anchor_offset about">
-        <h1>About</h1>
-        <img src="/images/Hoof_Hearted_Stables.png" height= "100px" alt="Hoof Hearted Stables logo">
-        <p>
-          Hoof Hearted Stables offers horse lodging and care. Our rates are
-          250/month for pasture horses, and 300/month for stabled horses. This
-          includes the cost of grain and hay. All horses are groomed weekly
-          and exercise in our ten-acre fields daily. Horse riding lessons are also offered. The trainer has been riding since the age of 3-4 and has had experience training 4-5 horses for riding.
-        </p>
+    <!--Services Page-->  
+    <section class="sectionIndicator" id="services">
+      <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
+        <h3>PRICING</h3>
+        <p class="w3-large">Choose a riding session that fits your needs.</p>
+        <div class="w3-row-padding" style="margin-top:64px">
+          <div class="w3-third w3-section">
+            <ul class="w3-ul w3-white w3-hover-shadow">
+              <li class="w3-black w3-xlarge w3-padding-32">Pasture Horses</li>
+              <li class="w3-padding-16"><b>Grain and Hay</b> Included</li>
+              <li class="w3-padding-16"><b>Unlimited</b> Visits</li>
+              <li class="w3-padding-16"><b>Daily</b> Cleaning</li>
+              <li class="w3-padding-16"><b>High Quality</b> Forage</li>
+              <li class="w3-padding-16"><b>Endless</b> Support</li>
+              <li class="w3-padding-16">
+                <h2 class="w3-wide">$ 250</h2>
+                <span class="w3-opacity">per month</span>
+              </li>
+            </ul>
+          </div>
+          <div class="w3-third">
+            <ul class="w3-ul w3-white w3-hover-shadow">
+              <li class="w3-red w3-xlarge w3-padding-48">Riding Lesson</li>
+              <li class="w3-padding-16"><b>Experienced</b> Trainers</li>
+              <li class="w3-padding-16"><b>Well Trained</b> Horses</li>
+              <li class="w3-padding-16"><b>Personalized</b> Sessions</li>
+              <li class="w3-padding-16"><b>1:1</b> Guidance</li>
+              <li class="w3-padding-16"><b>Endless</b> Support</li>
+              <li class="w3-padding-16">
+                <h2 class="w3-wide">$ 90</h2>
+                <span class="w3-opacity">per hour</span>
+              </li>
+            </ul>
+          </div>
+          <div class="w3-third w3-section">
+            <ul class="w3-ul w3-white w3-hover-shadow">
+              <li class="w3-black w3-xlarge w3-padding-32">Stabled Horses</li>
+              <li class="w3-padding-16"><b>Grain and Hay</b> Included</li>
+              <li class="w3-padding-16"><b>Unlimited</b> Visits</li>
+              <li class="w3-padding-16"><b>Daily</b> Cleaning</li>
+              <li class="w3-padding-16"><b>Endless</b> Support</li>
+              <li class="w3-padding-16"><b>Endless</b> Support</li>
+              <li class="w3-padding-16">
+                <h2 class="w3-wide">$ 300</h2>
+                <span class="w3-opacity">per month</span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
     <!--Contact Page-->
-    <section class="showcase" id="contact">
+    <section class="sectionIndicator showcase" id="contact">
       <div class="anchor_offset contact">
         <div class="container">
           <div style="background-image: url('/images/Horses.png');
