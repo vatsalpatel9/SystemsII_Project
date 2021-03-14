@@ -2,13 +2,23 @@
 <div class="navbar" id="navbar">
     <h1 class="logo">Hoof Hearted Stable</h1>
     <ul class="navlist" id="navlist">
-        <li><a href="/" class="menu">Home</a></li>
-        <li><a href="/customer/myhorses" class="menu">MyHorses</a></li>
-        <li><a href="/customer/bookings" class="menu">Bookings</a></li>
-        <li><a href="/customer/account" class="menu">Account</a></li>
-        <li><a href="/rm-session" class="menu">LogOut</a></li>
+        <li><a href="/" class="menu"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="/customer/myhorses" class="menu"><i class="fa fa-horse-head"></i> MyHorses</a></li>
+        <li><a href="/customer/bookings" class="menu"><i class="fa fa-calendar-alt"></i> Bookings</a></li>
+        <li><a href="/customer/account" class="menu"><i class="fa fa-user"></i> Account</a></li>
+        <li><a href="/rm-session" class="menu"><i class="fa fa-sign-out-alt"></i> LogOut</a></li>
     </ul>
     <span class="menuIcon" id="toggleBtn"><a>
             <i class="fa fa-bars"></i>
         </a> </span>
 </div>
+
+<!--Mobile Nav Bar-->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" class="menu w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="/" class="menu w3-bar-item w3-button"><i class="fa fa-home"></i> HOME</a>
+    <a href="/customer/myhorses" class="menu w3-bar-item w3-button"><i class="fa fa-horse-head"></i> MYHORSES</a>
+    <a href="/customer/bookings" class="menu w3-bar-item w3-button"><i class="fa fa-calendar-alt"></i> BOOKINGS</a>
+    <a href="/customer/account" class="menu w3-bar-item w3-button"><i class="fa fa-user-plus"></i> ACCOUNT</a>
+    <a href="/rm-session" class="menu w3-bar-item w3-button"><i class="fa fa-sign-out-alt"></i> LOGOUT</a>
+</nav>
