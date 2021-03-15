@@ -9,5 +9,29 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p>test</p>
+
+    <% if(details!=null) { %>
+    <table class="showcase-form card" id="bookings">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>Number of People </th>
+        <th>Date </th>
+        <th>Duration</th>
+      </tr>
+      <% details.forEach(function(item){ %>
+      <tr>
+        <td><%= item.firstname%></td>
+        <td><%= item.lastname %></td>
+        <td><%= item.phone%></td>
+        <td><%= item.numPeople %></td>
+        <td><%= item.days.toDateString()%></td>
+        <td><%= item.duration%>Hr</td>
+
+      </tr>
+      <% }) %>
+    </table>
+    <% } %>
   </body>
 </html>

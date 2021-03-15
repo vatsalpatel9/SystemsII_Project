@@ -4,6 +4,6 @@ const router = express.Router();
 router
     .use('/login', require('./login'))
     .use('/signup', require('./signup'))
-    //.use('/users', require('./users/'));
+    .use('/booking', require('./booking'));
 
 module.exports = router;

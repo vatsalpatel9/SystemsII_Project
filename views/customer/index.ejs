@@ -48,10 +48,9 @@
           <h1><%= title %></h1>
           <p>Welcome to <%= title %></p>
         </div>
-
         <div class="showcase-form card">
           <h2>Get Riding Lessons</h2>
-          <form action="/api/signup" method="POST">
+          <form action="/api/booking" method="POST">
             <div class="form-control">
               <input type="text" name="firstname" placeholder="First Name" required>
             </div>
@@ -70,13 +69,13 @@
            </div>
            <div class="parent">
              <div class="form-control-time-left">
-               <input type="text" class="timepicker" id="startTime" name="time" placeholder="Pick a Start Time"
+               <input type="text" class="timepicker" id="startTime" name="StartTime" placeholder="Pick a Start Time"
                  required>
              </div>
              <div class="form-control-time-right">
-               <input type="text" class="timepicker" id="endTime" name="time" placeholder="Pick a End Time" required>
+               <input type="text" class="timepicker" id="endTime" name="EndTime" placeholder="Pick a End Time" required>
              </div>
-           </div>
+          </div>
             <input type="submit" value="Let's Ride" class="btn btn-primary">
           </form>
         </div>
