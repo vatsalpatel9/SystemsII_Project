@@ -4,6 +4,7 @@ const session = require("express-session");
 require("./db/conn");
 const bodyParser = require('body-parser');
 const MongoStore = require('connect-mongo')(session);
+require("dotenv").config();
 
 const app = express();
 
@@ -16,20 +17,22 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Sessions
-app.use(session({
-    secret: 'dch1FDJDsn!dhf',
+app.use(
+  session({
+    secret: process.env.SESSIONSEC,
     resave: true,
     saveUninitialized: true,
     rolling: true,
     httpOnly: true,
     store: new MongoStore({
-        url: 'mongodb+srv://appUser:8rod40huijz75698@cluster0.rqilf.mongodb.net/sessionData?retryWrites=true&w=majority',
+      url: process.env.SESSIONSTORE,
     }),
     cookie: {
-        maxAge: 1000 * 60 * 60,
-        secure: false
-   }
-}))
+      maxAge: 1000 * 60 * 60,
+      secure: false,
+    },
+  })
+);
 
 //middlewares
 
