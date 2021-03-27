@@ -1,7 +1,8 @@
 const { connect } = require("mongodb");
 const mongoose = require("mongoose");
+require('dotenv').config();
 
-mongoose.connect("mongodb+srv://appUser:8rod40huijz75698@cluster0.rqilf.mongodb.net/appInfo?retryWrites=true&w=majority", {
+mongoose.connect(process.env.DATABASE_ACCESS, {
     useNewUrlParser:true,
     useUnifiedTopology: true,
     useCreateIndex: true
