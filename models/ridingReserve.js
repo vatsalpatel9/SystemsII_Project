@@ -1,3 +1,4 @@
+const { boolean } = require("@apimatic/schema");
 const mongoose = require("mongoose");
 
 const ridingReserveSchema = new mongoose.Schema({
@@ -23,6 +24,14 @@ const ridingReserveSchema = new mongoose.Schema({
     required: true
   },
   duration:{
+    type: Number,
+    required: true
+  },
+  paymentStatus:{
+    type: Boolean,
+    required: true
+  },
+  paymentAmount:{
     type: Number,
     required: true
   },

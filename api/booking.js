@@ -3,7 +3,7 @@ const Reservation = require("../models/ridingReserve");
 var router = express.Router();
 
 router.post('/',  async (req, res) => {
-    var start = req.body.StartTime;
+  /*  var start = req.body.StartTime;
     var end = req.body.EndTime;
     const date = req.body.days;
     var subStart = start.substring(0,2);
@@ -27,10 +27,11 @@ router.post('/',  async (req, res) => {
         });
         const reserved = await reserve.save();
         console.log(reserved.firstname);
-        res.redirect('/customer/bookings');
+        res.redirect('/api/payment');
     }catch(error){
         res.status(400).send(error);
-    }
+    }*/
+    res.redirect("/api/process-payment");
 });
 
 module.exports = router;
