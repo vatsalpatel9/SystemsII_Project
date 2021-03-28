@@ -110,8 +110,10 @@
                         })
                         .then(data => {
                             console.log(data);
+                            //TODO: change alert!
                             alert(
                                 'Payment complete successfully!\nCheck browser developer console for more details');
+                            location.href = '/customer/bookings';
                         })
                         .catch(err => {
                             console.error(err);

@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 });
 
 router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.urlencoded({ extended: true }));
 
 // Set the Access Token which is used to authorize to a merchant
 const accessToken = process.env.ACCESSTOKEN;
@@ -42,11 +42,13 @@ router.post("/", async (req, res) => {
 
   try {
     console.log("enter try block!");
-    const response = await JSONBig.parse(JSONBig.stringify(paymentsApi.createPayment(requestBody)));
+    const response = await paymentsApi.createPayment(requestBody);
+    const parsedResponse = JSONBig.parse(JSONBig.stringify(response));
     console.log(response);
+    console.log("URL: " + response.result.payment.receiptUrl);
     res.status(200).json({
-      'title': 'Payment Successful',
-      'result': response.result
+      title: "Payment Successful",
+      result: parsedResponse.result,
     });
     console.log("exit try block!");
   } catch (error) {
