@@ -9,7 +9,7 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p>test</p>
-
+<!--
     <% if(details!=null) { %>
       <table class="showcase-form card" id="bookings">
         <tr>
@@ -33,15 +33,16 @@
         <% }) %>
       </table>
     <% } %>
-
+-->
+    
     <div class="event-container">
-      <h3 class="year">2021</h3>
-
+      <h3 class="year">2021</h3> <!--Have to work solution for years-->
+    <% details.forEach(function(item){ %>
       <div class="event">
         <div class="event-left">
           <div class="event-date">
-            <div class="month">April</div>
-            <div class="date">8</div>
+            <div class="month"><%= item.days.toLocaleString('default', { month: 'long' })%></div>
+            <div class="date"><%= item.days.getDate() + 1%></div>
           </div>
         </div>
 
@@ -53,87 +54,16 @@
           </div>
 
           <div class="event-description">
-            <p>Lesson For: First Name + Last Name</p>
-            <p>Contact: (111)-222-3333</p>
-            <p># of People: 1</p>
-            <p>Duration: 1 hour</p>
+            
+              <p>Lesson For: <%= item.firstname%> <%= item.lastname %></p>
+              <p>Contact: <%= item.phone%></p>
+              <p>Number of People: <%= item.numPeople %></p>
+              <p>Duration: <%= item.duration%> hour</p>
+           
           </div>
         </div>
       </div>
-
-      <div class="event">
-        <div class="event-left">
-          <div class="event-date">
-            <div class="month">April</div>
-            <div class="date">22</div>
-          </div>
-        </div>
-
-        <div class="event-right">
-          <h3 class="event-title">Horse Riding Lesson</h3>
-
-          <div class="event-timing">
-            <i class="far fa-clock fa-2x"></i> 10:45 am
-          </div>
-          
-          <div class="event-description">
-            <p>Lesson For: First Name + Last Name</p>
-            <p>Contact: (111)-222-3333</p>
-            <p># of People: 3</p>
-            <p>Duration: 1 hour</p>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="year">2022</h3>
-
-      <div class="event">
-        <div class="event-left">
-          <div class="event-date">
-            <div class="month">January</div>
-            <div class="date">8</div>
-          </div>
-        </div>
-
-        <div class="event-right">
-          <h3 class="event-title">Horse Riding Lesson</h3>
-
-          <div class="event-timing">
-            <i class="far fa-clock fa-2x"></i> 10:00 am
-          </div>
-
-          <div class="event-description">
-            <p>Lesson For: First Name + Last Name</p>
-            <p>Contact: (111)-222-3333</p>
-            <p># of People: 2</p>
-            <p>Duration: 1 hour</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="event">
-        <div class="event-left">
-          <div class="event-date">
-            <div class="month">February</div>
-            <div class="date">9</div>
-          </div>
-        </div>
-
-        <div class="event-right">
-          <h3 class="event-title">Horse Riding Lesson</h3>
-
-          <div class="event-timing">
-            <i class="far fa-clock fa-2x"></i> 10:30 am
-          </div>
-
-          <div class="event-description">
-            <p>Lesson For: First Name + Last Name</p>
-            <p>Contact: (111)-222-3333</p>
-            <p># of People: 2</p>
-            <p>Duration: 1 hour</p>
-          </div>
-        </div>
-      </div>
+      <% }) %>
 
     </div>
 
