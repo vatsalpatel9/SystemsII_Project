@@ -13,7 +13,6 @@ const ridingReserveSchema = new mongoose.Schema({
   phone: {
     type: Number,
     required: true,
-    unique: true,
   },
   numPeople:{
     type: Number,
@@ -22,6 +21,14 @@ const ridingReserveSchema = new mongoose.Schema({
   days:{
     type: Date,
     required: true
+  },
+  startTime:{
+    type: String,
+    required: true
+  },
+  endTime:{
+    type: String,
+    requried: true
   },
   duration:{
     type: Number,
@@ -38,6 +45,10 @@ const ridingReserveSchema = new mongoose.Schema({
   userId:{
     type: String,
     required: true
+  },
+  creationDate:{
+    type: Date,
+    default: Date.now
   }
 });
 
