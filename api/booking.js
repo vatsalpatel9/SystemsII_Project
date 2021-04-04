@@ -1,12 +1,14 @@
 var express = require("express");
 var moment = require("moment");
 const Reservation = require("../models/ridingReserve");
+const paymentModel = require("../models/paymentModel");
 const bodyParser = require("body-parser");
 const JSONBig = require("json-bigint");
 require("dotenv").config();
 var router = express.Router();
 
 const { ApiError, Client, Environment } = require("square");
+const { duration } = require("moment");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -100,6 +102,18 @@ router.post("/payment", async (req, res) => {
       title: "Payment Successful",
       result: parsedResponse.result,
     });
+
+    ///////////////////////////////////////////
+    //log payment conformation
+    ///////////////////////////////////////////
+    try{
+      const payment_details = new paymentModel({
+        response: parsedResponse
+      })
+    } catch (error) {
+      res.status(400).send("Database Storage Failed: " + error);
+    }
+
     console.log("exit try block!");
   } catch (error) {
     let errorResult = null;
