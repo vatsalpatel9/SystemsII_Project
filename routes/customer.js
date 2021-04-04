@@ -20,7 +20,7 @@ function checkSignIn(req, res, next){
 router.get('/myhorses', checkSignIn, async (req, res) => {
     const usrId = req.session.user;
     const userName = await Register.findOne({_id:usrId});
-    res.render('customer/myhorses', { title: `myHorses ${userName.firstname}`});
+    res.render('customer/myhorses', { title: `HHS-myHorses | ${userName.firstname}`});
 });
 
 router.get("/bookings", checkSignIn, async (req, res) => {
@@ -30,7 +30,7 @@ router.get("/bookings", checkSignIn, async (req, res) => {
    if(err){
       console.log(err);
    }else{
-      res.render("customer/book", { details: allDetails, title: `bookings ${userName.firstname}` });
+      res.render("customer/book", { details: allDetails, title: `HHS-bookings | ${userName.firstname}` });
    }
   });
  // res.render("customer/book", { title: `bookings ${userName.firstname}` });
@@ -39,7 +39,7 @@ router.get("/bookings", checkSignIn, async (req, res) => {
 router.get("/account", checkSignIn, async (req, res) => {
   const usrId = req.session.user;
   const userName = await Register.findOne({ _id: usrId });
-  res.render("customer/account", { title: `Account of ${userName.firstname}` });
+  res.render("customer/account", { title: `HHS-Account | ${userName.firstname}` });
 });
 
 module.exports =router;

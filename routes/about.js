@@ -7,7 +7,7 @@ var router = express.Router();
 }); */
 
 router.get('/about', function(req,res){
-  res.render('about', {title:'about'});
+  res.render('about', {title:'HHS-about'});
 });
 
 module.exports = router;

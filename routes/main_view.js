@@ -14,17 +14,17 @@ router.get('/', async function(req, res) {
       if(userType === 0){
         res.render("secret/index", {title: `Welcome Admin ${userName.firstname}`})
       }else{
-        res.render("customer/index", { title: userName.firstname });
+        res.render("customer/index", { title: `HHS | ${userName.firstname}`});
       }
     }
 });
 
 router.get('/login', function(req,res){
-  res.render('login', {title:'Hoof Hearted Stables | Login'});
+  res.render('login', {title:'HHS | Login'});
 });
 
 router.get('/signup', function(req,res){
-  res.render('signup', {title:'Hoof Hearted Stables | Signup'});
+  res.render('signup', {title:'HHS | Signup'});
 });
 
 module.exports = router;
