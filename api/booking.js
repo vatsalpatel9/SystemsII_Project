@@ -1,5 +1,6 @@
 var express = require("express");
 var moment = require("moment");
+const crypto = require("crypto");
 const Reservation = require("../models/ridingReserve");
 const paymentModel = require("../models/paymentModel");
 const bodyParser = require("body-parser");
@@ -11,6 +12,19 @@ const { ApiError, Client, Environment } = require("square");
 const { duration } = require("moment");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
+
+//////////////////////////////////////////////////////////////////////////////////
+//--Pass current reservation to payment process
+//////////////////////////////////////////////////////////////////////////////////
+var currId;
+function storeReserveID(id){
+  currId = id;
+  console.log("currID: " + currId);
+}
+
+function getCurrId(){
+  return currId;
+}
 
 //////////////////////////////////////////////////////////////////////////////////
 //   Set the Access Token which is used to authorize to a merchant
@@ -58,7 +72,8 @@ router.post('/',  async (req, res) => {
             userId: req.session.user
         });
         const reserved = await reserve.save();
-        console.log(reserved.firstname);
+        const reservationId = reserved._id;
+        storeReserveID(reservationId);
         res.redirect("/api/booking/renderPayment");
     }catch(error){
         res.status(400).send(error);
@@ -77,7 +92,6 @@ router.get("/renderPayment", (req, res) => {
 //--Post the payment to server
 //////////////////////////////////////////////////////////////////////////////////
 router.post("/payment", async (req, res) => {
-  console.log("invoked");
   const requestParams = req.body;
   console.log(requestParams);
   // Charge the customer's card
@@ -104,14 +118,38 @@ router.post("/payment", async (req, res) => {
     });
 
     ///////////////////////////////////////////
-    //log payment conformation
+    //--log payment conformation
     ///////////////////////////////////////////
-    try{
+    try {
       const payment_details = new paymentModel({
-        response: parsedResponse
-      })
+        response: parsedResponse,
+      });
     } catch (error) {
       res.status(400).send("Database Storage Failed: " + error);
+    }
+
+    ///////////////////////////////////////////
+    //--Update payment status
+    ///////////////////////////////////////////
+    try{
+      const reservationId = getCurrId();
+      const newvalues = {
+        $set: {
+          paymentStatus: true,
+          paymentId: response.result.payment.id,
+          paymentUrl: response.result.payment.receiptUrl
+        },
+      };
+      Reservation.updateOne({_id:reservationId }, newvalues, function(err, res){
+        if(err){
+          throw err;
+        }else{
+          console.log("Update successful");
+        }
+      });
+
+    }catch(error){
+      res.status(400).send("Payment Status Updated: " + error);
     }
 
     console.log("exit try block!");

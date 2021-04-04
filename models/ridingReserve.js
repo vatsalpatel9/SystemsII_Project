@@ -14,42 +14,50 @@ const ridingReserveSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  numPeople:{
+  numPeople: {
     type: Number,
-    required: true
+    required: true,
   },
-  days:{
+  days: {
     type: Date,
-    required: true
+    required: true,
   },
-  startTime:{
+  startTime: {
     type: String,
-    required: true
+    required: true,
   },
-  endTime:{
+  endTime: {
     type: String,
-    requried: true
+    requried: true,
   },
-  duration:{
+  duration: {
     type: Number,
-    required: true
+    required: true,
   },
-  paymentStatus:{
+  paymentStatus: {
     type: Boolean,
-    required: true
+    required: true,
   },
-  paymentAmount:{
+  paymentAmount: {
     type: Number,
-    required: true
+    required: true,
   },
-  userId:{
+  paymentId: {
     type: String,
-    required: true
+    required: false,
   },
-  creationDate:{
+  paymentUrl: {
+    type: String,
+    required: false,
+  },
+  userId: {
+    type: String,
+    required: true,
+  },
+  creationDate: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 //collection
