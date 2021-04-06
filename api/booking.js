@@ -74,7 +74,7 @@ router.post('/',  async (req, res) => {
         const reserved = await reserve.save();
         const reservationId = reserved._id;
         storeReserveID(reservationId);
-        res.redirect("/api/booking/renderPayment");
+        res.render("customer/payment", {price: price});
     }catch(error){
         res.status(400).send(error);
     }
