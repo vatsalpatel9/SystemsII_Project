@@ -94,12 +94,19 @@ router.get("/renderPayment", (req, res) => {
 router.post("/payment", async (req, res) => {
   const requestParams = req.body;
   console.log(requestParams);
+
+  ////////////////////////////////////////////
+  //--Get price amount
+  ////////////////////////////////////////////
+  const reserPrice = await Reservation.findOne({ _id: getCurrId() });
+  const price = reserPrice.paymentAmount * 100;
+
   // Charge the customer's card
   const paymentsApi = client.paymentsApi;
   const requestBody = {
     sourceId: requestParams.nonce,
     amountMoney: {
-      amount: 100, // $1.00 charge
+      amount: price,
       currency: "USD",
     },
     locationId: requestParams.location_id,
@@ -131,24 +138,27 @@ router.post("/payment", async (req, res) => {
     ///////////////////////////////////////////
     //--Update payment status
     ///////////////////////////////////////////
-    try{
+    try {
       const reservationId = getCurrId();
       const newvalues = {
         $set: {
           paymentStatus: true,
           paymentId: response.result.payment.id,
-          paymentUrl: response.result.payment.receiptUrl
+          paymentUrl: response.result.payment.receiptUrl,
         },
       };
-      Reservation.updateOne({_id:reservationId }, newvalues, function(err, res){
-        if(err){
-          throw err;
-        }else{
-          console.log("Update successful");
+      Reservation.updateOne(
+        { _id: reservationId },
+        newvalues,
+        function (err, res) {
+          if (err) {
+            throw err;
+          } else {
+            console.log("Update successful");
+          }
         }
-      });
-
-    }catch(error){
+      );
+    } catch (error) {
       res.status(400).send("Payment Status Updated: " + error);
     }
 
