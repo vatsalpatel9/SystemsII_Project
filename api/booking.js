@@ -145,6 +145,7 @@ router.post("/payment", async (req, res) => {
       const payment_details = new paymentModel({
         response: parsedResponse,
       });
+      const saved = await payment_details.save();
     } catch (error) {
       res.status(400).send("Database Storage Failed: " + error);
     }
