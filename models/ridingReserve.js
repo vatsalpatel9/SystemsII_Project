@@ -13,6 +13,7 @@ const ridingReserveSchema = new mongoose.Schema({
   phone: {
     type: Number,
     required: true,
+    unique: false
   },
   numPeople: {
     type: Number,
@@ -45,10 +46,12 @@ const ridingReserveSchema = new mongoose.Schema({
   paymentId: {
     type: String,
     required: false,
+    unique: true
   },
   paymentUrl: {
     type: String,
     required: false,
+    unique: true
   },
   userId: {
     type: String,
