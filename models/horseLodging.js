@@ -18,17 +18,13 @@ const horseLodgingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  days: {
+  startDay: {
     type: Date,
     required: true,
   },
-  startTime: {
-    type: String,
+  endDay: {
+    type: Date,
     required: true,
-  },
-  endTime: {
-    type: String,
-    requried: true,
   },
   duration: {
     type: Number,
