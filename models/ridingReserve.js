@@ -1,4 +1,3 @@
-const { boolean } = require("@apimatic/schema");
 const mongoose = require("mongoose");
 
 const ridingReserveSchema = new mongoose.Schema({
