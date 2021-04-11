@@ -37,7 +37,15 @@
         dropdown: true,
         scrollbar: true,
         });
+
+        $('#serviceSelector').change(function(){
+            $('.showcase-form').hide();
+            var service = $('#serviceSelector').val();
+            $('#'+service).show();
+        })
+
       });
+
     </script>
   </head>
   <body>
@@ -45,10 +53,16 @@
     <section class="sectionIndicator showcase" id="home">
       <div class="container grid">
         <div class="showcase-text">
-          <h1><%= title %></h1>
-          <p>Welcome to <%= title %></p>
+          <h1>Welcome <%= username %></h1>
+          <p>What would you like to reserve...</p>
+          <select id="serviceSelector">
+            <option value="ridingLesson">Riding Lesson</option>
+            <option value="horseTraining">Horse Training</option>
+            <option value="horseLodging">Horse Lodging</option>
+          </select>
         </div>
-        <div class="showcase-form card">
+
+        <div class="showcase-form card" id="ridingLesson">
           <h2>Get Riding Lessons</h2>
           <form action="/api/booking/riding" method="POST">
             <div class="form-control">
@@ -79,6 +93,73 @@
             <input type="submit" value="Let's Ride" class="btn btn-primary">
           </form>
         </div>
+
+        <div class="showcase-form card" id="horseTraining" style="display:none;">
+          <h2>Horse Training</h2>
+          <form action="/api/booking/training" method="POST">
+            <div class="form-control">
+              <input type="text" name="firstname" placeholder="First Name" required>
+            </div>
+            <div class="form-control">
+              <input type="text" name="lastname" placeholder="Last Name" required>
+            </div>
+            <div class="form-control">
+              <input type="phone" name="phone" placeholder="Phone" required>
+            </div>
+            <div class="form-control">
+              <input type="text" name="numPeople" placeholder="Number of Riders" required>
+            </div>
+            <div class="form-control">
+              <input type="date" name="days" id="days" min="2021-03-12" max="2021-04-12" placeholder="MM/DD/YYYY"
+                required>
+            </div>
+            <div class="parent">
+              <div class="form-control-time-left">
+                <input type="text" class="timepicker" id="startTime" name="StartTime" placeholder="Pick a Start Time"
+                  required>
+              </div>
+              <div class="form-control-time-right">
+                <input type="text" class="timepicker" id="endTime" name="EndTime" placeholder="Pick a End Time"
+                  required>
+              </div>
+            </div>
+            <input type="submit" value="Let's Ride" class="btn btn-primary">
+          </form>
+        </div>
+
+        <div class="showcase-form card" id="horseLodging" style="display:none;">
+          <h2>Horse Lodging</h2>
+          <form action="/api/booking/loding" method="POST">
+            <div class="form-control">
+              <input type="text" name="firstname" placeholder="First Name" required>
+            </div>
+            <div class="form-control">
+              <input type="text" name="lastname" placeholder="Last Name" required>
+            </div>
+            <div class="form-control">
+              <input type="phone" name="phone" placeholder="Phone" required>
+            </div>
+            <div class="form-control">
+              <input type="text" name="numPeople" placeholder="Number of Riders" required>
+            </div>
+            <div class="form-control">
+              <input type="date" name="days" id="days" min="2021-03-12" max="2021-04-12" placeholder="MM/DD/YYYY"
+                required>
+            </div>
+            <div class="parent">
+              <div class="form-control-time-left">
+                <input type="text" class="timepicker" id="startTime" name="StartTime" placeholder="Pick a Start Time"
+                  required>
+              </div>
+              <div class="form-control-time-right">
+                <input type="text" class="timepicker" id="endTime" name="EndTime" placeholder="Pick a End Time"
+                  required>
+              </div>
+            </div>
+            <input type="submit" value="Let's Ride" class="btn btn-primary">
+          </form>
+        </div>
+
       </div>
     </section>
 
