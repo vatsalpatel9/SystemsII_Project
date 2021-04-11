@@ -433,7 +433,7 @@ img {
     display: flow-root;
     align-items: center;
     justify-content: center;
-    width: 120px;
+    width: auto;
     padding: 10px;
     border-radius: 16px;
     margin: 5px 0;
