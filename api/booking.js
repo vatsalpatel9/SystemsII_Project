@@ -160,6 +160,7 @@ router.post("/loding", async (req, res) => {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       phone: req.body.phone,
+      horseName: horseName,
       horseType: horseType,
       startDay: startdate,
       endDay: enddate,

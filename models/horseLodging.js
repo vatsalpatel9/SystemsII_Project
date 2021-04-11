@@ -14,6 +14,10 @@ const horseLodgingSchema = new mongoose.Schema({
     required: true,
     unique: false,
   },
+  horseName: {
+    type: String,
+    required: true
+  },
   horseType: {
     type: String,
     required: true,
