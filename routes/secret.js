@@ -1,5 +1,7 @@
 var express = require("express");
 const Reservation = require("../models/ridingReserve");
+const Lodging = require("../models/horseLodging");
+const Training = require("../models/horseTraining");
 const Feedback = require("../models/feedback");
 
 var router = express.Router();
@@ -11,14 +13,36 @@ router.get("/ridingReserve", async (req, res) => {
     } else {
       res.render("secret/book", {
         details: allDetails,
-        title: `HHS-bookings`,
+        title: `HHS-Riding`,
+      });
+    }
+  });
+});
+
+router.get("/trainingReserve", async(req, res) => {
+  Training.find(function (err, allDetails){
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("secret/training", {
+        details: allDetails,
+        title: `HHS-Riding`,
       });
     }
   });
 });
 
 router.get("/lodingReserve", async(req, res) => {
-    res.render("secret/lodging", {title: `Secret Lodging`});
+    Lodging.find(function (err, allLodgings){
+      if(err){
+        console.log(err);
+      }else{
+        res.render("secret/lodging", {
+          details: allLodgings,
+          title: `HHS-Lodgings`
+        })
+      }
+    });
 });
 
 router.get("/feedback", async(req, res) => {
@@ -28,7 +52,7 @@ router.get("/feedback", async(req, res) => {
         } else {
           res.render("secret/feedback", {
             details: allFeedbacks,
-            title: `HHS-bookings`,
+            title: `HHS-Feedbacks`,
           });
         }
     });
