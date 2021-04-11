@@ -1,7 +1,8 @@
 var express = require('express');
-const session = require('express-session');
 var router = express.Router();
 const Register = require('../models/registers');
+const Lodging = require('../models/horseLodging');
+const Training = require('../models/horseTraining');
 const Reservation = require("../models/ridingReserve");
 
 
@@ -19,7 +20,23 @@ function checkSignIn(req, res, next){
 router.get('/myhorses', checkSignIn, async (req, res) => {
     const usrId = req.session.user;
     const userName = await Register.findOne({_id:usrId});
-    res.render('customer/myhorses', { title: `HHS-myHorses | ${userName.firstname}`});
+    Lodging.find({userId: usrId}, function(err, lodgingDetail){
+      if(err){
+         console.log(err);
+      }else{
+         Training.find({ userId: usrId }, function (err, trainDetail) {
+           if (err) {
+             console.log(err);
+           } else {
+             res.render("customer/myhorses", {
+               lodgingDet: lodgingDetail,
+               trainDet: trainDetail,
+               title: `HHS-myHorses | ${userName.firstname}`,
+             });
+           }
+         });
+      }
+    });
 });
 
 router.get("/bookings", checkSignIn, async (req, res) => {
