@@ -38,4 +38,22 @@ router.post("/", async (req, res, next) => {
   res.redirect('/');
 });
 
+router.post("/delete", async (req, res, next) => {
+  try {
+    await Register.deleteOne({ _id: req.session.user }, function (err, res) {
+      if (err) {
+          console.log("fail");
+        throw err;
+      } else {
+        console.log("success!");
+        next();
+      }
+    });
+  } catch (error) {
+       console.log("fail");
+    res.status(400).send(error);
+  }
+  res.redirect("/rm-session");
+});
+
 module.exports = router;
