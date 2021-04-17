@@ -38,12 +38,6 @@
         scrollbar: true,
         });
 
-        $('#serviceSelector').change(function(){
-            $('.showcase-form').hide();
-            var service = $('#serviceSelector').val();
-            $('#'+service).show();
-        })
-
       });
 
     </script>
@@ -57,7 +51,6 @@
           <p>What would you like to reserve...</p>
           <div>
             <select id="serviceSelector" autocomplete="off">
-              <option value="Select">Select Service</option>
               <option value="ridingLesson">Riding Lesson</option>
               <option value="horseTraining">Horse Training</option>
               <option value="horseLodging">Horse Lodging</option>
