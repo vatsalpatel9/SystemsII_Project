@@ -54,8 +54,16 @@ router.get("/bookings", checkSignIn, async (req, res) => {
 
 router.get("/account", checkSignIn, async (req, res) => {
   const usrId = req.session.user;
-  const userName = await Register.findOne({ _id: usrId });
-  res.render("customer/account", { title: `HHS-Account | ${userName.firstname}` });
+  await Register.findOne({ _id: usrId }, function(err, user){
+     if(err){
+        console.log(err);
+     }else{
+         res.render("customer/account", {
+           userDetail: user,
+           title: `HHS-Account | ${user.firstname}`,
+         });
+     }
+  });
 });
 
 module.exports =router;
