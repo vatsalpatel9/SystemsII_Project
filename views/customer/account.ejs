@@ -9,8 +9,36 @@
 <body>
     <%- include("../common/navbar-customer") %>
     <h1  style="text-align: center;"><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p>test</p>
+
+          <div class="showcase-form card" id="ridingLesson">
+              <h2>Change Password</h2>
+              <form action="/api/changePass" method="POST">
+                  <div class="form-control">
+                      <input type="text" name="currPass" placeholder="Current Password" required>
+                  </div>
+                  <div class="form-control">
+                      <input type="text" name="newPass" placeholder="New Password" required>
+                  </div>
+                  <div class="form-control">
+                      <input type="phone" name="newPass2" placeholder="Confirm New Password" required>
+                  </div>
+                  <input type="submit" value="Change Password" class="btn btn-primary">
+              </form>
+          </div>
+
+          <div class="showcase-form card" id="ridingLesson">
+              <h2>Account Details</h2>
+                  <div class="form-control">
+                      <p>Name: <%= userDetail.firstname %> <%= userDetail.lastname %></p>
+                  </div>
+                  <div class="form-control">
+                      <p>Email: <%= userDetail.email %></p>
+                  </div>
+                  <div class="form-control">
+                      <p>Phone: <%= userDetail.phone %></p>
+                  </div>
+          </div>
+
 </body>
 
 </html>
