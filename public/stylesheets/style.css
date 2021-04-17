@@ -521,3 +521,51 @@ img {
     border-color: #000;
     background-color: rgba(251, 255, 0, 0.15);
 }
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:170px;}
+    80% {opacity:1;}
+    100% {opacity:1;width:550px;}
+}
+  
+.slide {
+    display:inline-block;
+    overflow:hidden;
+    white-space:nowrap;
+}
+  
+.slide:first-of-type {    /* For increasing performance 
+                            ID/Class should've been used. 
+                            For a small demo 
+                            it's okaish for now */
+    animation: showup 7s infinite 0s;
+    animation-iteration-count: 1;
+}
+
+.slide:last-of-type {
+    width:550px;
+    animation: reveal 7s infinite 0s;
+    animation-iteration-count: 1;
+}
+  
+.slide:last-of-type span {
+    margin-left:-355px;
+    animation: slidein 7s infinite 0s;
+    animation-iteration-count: 1;
+}
