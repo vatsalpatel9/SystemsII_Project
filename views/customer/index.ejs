@@ -52,11 +52,12 @@
     <%- include("../common/navbar-customer") %>
     <section class="sectionIndicator showcase" id="home">
       <div class="container grid">
-        <div class="showcase-text slide">
+        <div class="showcase-text">
           <h1 class="slide">Welcome <%= username %></h1>
           <p>What would you like to reserve...</p>
-          <div class="custom-select" style="width:200px;">
+          <div>
             <select id="serviceSelector" autocomplete="off">
+              <option value="Select">Select Service</option>
               <option value="ridingLesson">Riding Lesson</option>
               <option value="horseTraining">Horse Training</option>
               <option value="horseLodging">Horse Lodging</option>
