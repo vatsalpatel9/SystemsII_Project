@@ -53,8 +53,11 @@ router.post("/riding", async (req, res) => {
   const duration = subEnd - subStart;
   const price = duration * 70;
 
-  //Remove for production
-  console.log("Start: " + formattedStart);
+  if (subEnd < subStart){
+    res.redirect('back');
+  }
+    //Remove for production
+    console.log("Start: " + formattedStart);
   console.log("end: " + formattedEnd);
   console.log("Date: " + date);
   console.log("Duration: " + duration);
