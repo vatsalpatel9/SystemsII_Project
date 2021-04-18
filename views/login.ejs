@@ -10,6 +10,7 @@
     <div class="showcase-form card" style="margin: 0 auto; height: 310px">
       <h1 style="text-align: center">Login</h1>
       <p style="text-align: center">Sign in to an existing account</p>
+      <p id="InvalidCreds" style="display: none; color: brown;">Invalid Credentials</p>
       <form action="/api/login" method="POST">
         <div class="form-control">
           <input type="email" name="email" placeholder="Email" required>
@@ -22,3 +23,6 @@
     </div>
   </body>
 </html>
+<script>
+  $("#"+getUrlVars().errType).show();
+</script>

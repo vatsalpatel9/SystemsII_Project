@@ -16,12 +16,13 @@ router.post('/', async(req, res) => {
                 console.log(req.session);
                 res.redirect('/');
             } else {
-                res.send("Invaild email or password");
+                return res.redirect("/login?errType=InvalidCreds");
             }
         });
 
     }catch (error){
-        res.status(400).send("invalid email");
+        res.status(400);
+        return res.redirect("/login?errType=InvalidCreds");
     }
 });
 
