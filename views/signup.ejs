@@ -10,6 +10,12 @@
     <div class="showcase-form card" style="margin: 0 auto">
       <h1 style="text-align: center">Create Account</h1>
       <form action="/api/signup" method="POST">
+        <div class="form-control" id="InvaildEmail" style="display: none;">
+          <p style="color: brown;">Invaild Email!</p>
+        </div>
+        <div class="form-control" id="PasswordMismatch" style="display: none;">
+          <p style="color: brown;">Passwords Not Matching!</p>
+        </div>
         <div class="form-control">
           <input type="text" name="firstname" placeholder="First Name" required>
         </div>
@@ -33,3 +39,16 @@
     </div>
   </body>
 </html>
+
+<script>
+  console.log(getUrlVars().errType);
+  switch(getUrlVars().errType){
+    case 'PasswordMismatch':
+      $("#PasswordMismatch").show();
+      break;
+    case 'InvaildEmail':
+      $("#"+getUrlVars().errType).show();
+      break;
+  }
+  
+</script>
