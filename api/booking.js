@@ -1,17 +1,19 @@
 var express = require("express");
 var moment = require("moment");
 const SERVICE_TYPE = require("../misc/service_type");
+const Register = require("../models/registers");
 const Reservation = require("../models/ridingReserve");
 const Training = require("../models/horseTraining");
 const Lodging = require("../models/horseLodging");
 const paymentModel = require("../models/paymentModel");
 const bodyParser = require("body-parser");
 const JSONBig = require("json-bigint");
+var nodemailer = require("nodemailer");
 require("dotenv").config();
 var router = express.Router();
 
 const { ApiError, Client, Environment } = require("square");
-const { LODGING } = require("../misc/service_type");
+const { response } = require("express");
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -75,6 +77,7 @@ router.post("/riding", async (req, res) => {
       duration: duration,
       paymentStatus: false,
       paymentAmount: price,
+      paymentId: "false",
       userId: req.session.user,
     });
     const reserved = await reserve.save();
@@ -314,6 +317,33 @@ router.post("/payment", async (req, res) => {
       res.status(400).send("Payment Status Updated: " + error);
     }
 
+    //////////////////////////////////////////////////////////////////////////////
+    //Mail conformation
+    //////////////////////////////////////////////////////////////////////////////
+    var userId = await Register.findOne({ _id: req.session.user });
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASS,
+      },
+    });
+
+    var mailOptions = {
+      from: process.env.EMAIL,
+      to: userId.email,
+      subject: "Payment Conformation",
+      text: "Recipt Url for your " + service + response.result.payment.receiptUrl,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+
     console.log("exit try block!");
   } catch (error) {
     let errorResult = null;
@@ -330,6 +360,7 @@ router.post("/payment", async (req, res) => {
       resul: errorResult,
     });
   }
+
 });
 
 module.exports = router;
