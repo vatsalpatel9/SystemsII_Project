@@ -47,7 +47,7 @@
     <section class="sectionIndicator showcase" id="home">
       <div class="container grid">
         <div class="showcase-text">
-          <h1 class="slide">Welcome <%= username %></h1>
+          <h1 class="slide">Welcome <%= username.firstname %></h1>
           <p>What would you like to reserve...</p>
           <div>
             <select id="serviceSelector" autocomplete="off">
@@ -64,13 +64,13 @@
           <p id="InvalidTime" style="display: none; color: brown;">Please Pick Correct Time!</p>
           <form action="/api/booking/riding" method="POST">
             <div class="form-control">
-              <input type="text" name="firstname" placeholder="First Name" required>
+              <input type="text" name="firstname" placeholder="First Name" value="<%= username.firstname %>" required>
             </div>
             <div class="form-control">
-              <input type="text" name="lastname" placeholder="Last Name" required>
+              <input type="text" name="lastname" placeholder="Last Name" value="<%= username.lastname %>" required>
             </div>
             <div class="form-control">
-              <input type="phone" name="phone" placeholder="Phone" required>
+              <input type="phone" name="phone" placeholder="Phone" value="<%= username.phone %>" required>
             </div>
             <div class="form-control">
               <input type="text" name="numPeople" placeholder="Number of Riders" required>
@@ -96,13 +96,13 @@
           <h2>Horse Training</h2>
           <form action="/api/booking/training" method="POST">
             <div class="form-control">
-              <input type="text" name="firstname" placeholder="First Name" required>
+              <input type="text" name="firstname" placeholder="First Name" value="<%= username.firstname %>" required>
             </div>
             <div class="form-control">
-              <input type="text" name="lastname" placeholder="Last Name" required>
+              <input type="text" name="lastname" placeholder="Last Name" value="<%= username.lastname %>" required>
             </div>
             <div class="form-control">
-              <input type="phone" name="phone" placeholder="Phone" required>
+              <input type="phone" name="phone" placeholder="Phone" value="<%= username.phone %>" required>
             </div>
             <div class="form-control">
               <input type="text" name="horsename" placeholder="Horse Name" required>
@@ -130,13 +130,13 @@
           <h2>Horse Lodging</h2>
           <form action="/api/booking/loding" method="POST">
             <div class="form-control">
-              <input type="text" name="firstname" placeholder="First Name" required>
+              <input type="text" name="firstname" placeholder="First Name" value="<%= username.firstname %>" required>
             </div>
             <div class="form-control">
-              <input type="text" name="lastname" placeholder="Last Name" required>
+              <input type="text" name="lastname" placeholder="Last Name" value="<%= username.lastname %>" required>
             </div>
             <div class="form-control">
-              <input type="phone" name="phone" placeholder="Phone" required>
+              <input type="phone" name="phone" placeholder="Phone" value="<%= username.phone %>" required>
             </div>
             <div class="form-control">
               <h6>Horse Type: </h6>

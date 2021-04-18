@@ -16,7 +16,7 @@ router.get('/', async function(req, res) {
       }else{
         res.render("customer/index", { 
           title: `HHS | ${userName.firstname}`,
-          username: userName.firstname
+          username: userName
         });
       }
     }
