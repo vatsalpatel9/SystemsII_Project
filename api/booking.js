@@ -147,15 +147,17 @@ router.post("/loding", async (req, res) => {
   var price;
 
   let startdate = new Date(req.body.startDay);
-  startdate = new Date(startdate.getTime() + startdate.getTimezoneOffset() * 60000);
+  startdate = new Date(
+    startdate.getTime() + startdate.getTimezoneOffset() * 60000
+  );
   let enddate = new Date(req.body.startDay);
   enddate = new Date(enddate.getTime() + enddate.getTimezoneOffset() * 60000);
   enddate.setDate(enddate.getDate() + numDays);
-  
-  if(horseType === "stable"){
-    price = duration*300;
-  }else if(horseType === "pasture"){
-    price = duration*250;
+
+  if (horseType === "stable") {
+    price = duration * 300;
+  } else if (horseType === "pasture") {
+    price = duration * 250;
   }
 
   //Remove for production
@@ -170,8 +172,8 @@ router.post("/loding", async (req, res) => {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       phone: req.body.phone,
-      horseName: horseName,
       horseType: horseType,
+      horseName: req.body.horseName,
       startDay: startdate,
       endDay: enddate,
       duration: duration,
