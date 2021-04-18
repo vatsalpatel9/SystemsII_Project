@@ -55,8 +55,8 @@ router.post("/riding", async (req, res) => {
   const duration = subEnd - subStart;
   const price = duration * 70;
 
-  if (subEnd < subStart){
-    res.redirect('back');
+  if (subEnd <= subStart){
+    return res.redirect("/?errType=InvalidTime");
   }
     //Remove for production
     console.log("Start: " + formattedStart);
@@ -101,6 +101,10 @@ router.post("/training", async (req, res) => {
   const subEnd = formattedEnd.substring(0, 2);
   const duration = subEnd - subStart;
   const price = duration * 100;
+
+    if (subEnd <= subStart) {
+      return res.redirect("/?errType=InvalidTime");
+    }
 
   //Remove for production
   console.log("Start: " + formattedStart);

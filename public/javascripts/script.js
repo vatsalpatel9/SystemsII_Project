@@ -88,10 +88,14 @@ if (newMM < 10) {
 }
 oneMonth = yyyy + "-" + newMM + "-" + dd;
 console.log(oneMonth);
-window.onload = function(){
-  document.getElementById("days").setAttribute("min", today);
-  document.getElementById("days").setAttribute("max", oneMonth);
-}
+window.onload = function () {
+  var list, index;
+  list = document.getElementsByClassName("days");
+  for (index = 0; index < list.length; ++index) {
+    list[index].setAttribute("min", today);
+    list[index].setAttribute("max", oneMonth);
+  }
+};
 
 $(document).ready(function () {
   var defaultselectbox = $("#serviceSelector");
@@ -168,40 +172,43 @@ $(document).ready(function () {
     $(".selectLabel").removeClass("active");
     $(".selectLabel").text($(this).text());
     defaultselectbox.val($(this).text());
-	$(".showcase-form").hide();
-	switch($(".selectLabel").text()){
-		case "Riding Lesson":
-			$('#ridingLesson').show();
-			break;
-		case "Horse Training":
-			$("#horseTraining").show();
-			break;
-		case "Horse Lodging":
-			$("#horseLodging").show();
-			break;
-		default:
-			$('#ridingLesson').show();
-			break;
-	}
+    $(".showcase-form").hide();
+    switch ($(".selectLabel").text()) {
+      case "Riding Lesson":
+        $("#ridingLesson").show();
+        break;
+      case "Horse Training":
+        $("#horseTraining").show();
+        break;
+      case "Horse Lodging":
+        $("#horseLodging").show();
+        break;
+      default:
+        $("#ridingLesson").show();
+        break;
+    }
   });
 });
 
 function focusItems() {
-
-	$('.options').on('focus', 'li', function() {
-		$this = $(this);
-		$this.addClass('active').siblings().removeClass();
-	}).on('keydown', 'li', function(e) {
-		$this = $(this);
-		if (e.keyCode == 40) {
-			$this.next().focus();
-			return false;
-		} else if (e.keyCode == 38) {
-			$this.prev().focus();
-			return false;
-		}
-	}).find('li').first().focus();
-
+  $(".options")
+    .on("focus", "li", function () {
+      $this = $(this);
+      $this.addClass("active").siblings().removeClass();
+    })
+    .on("keydown", "li", function (e) {
+      $this = $(this);
+      if (e.keyCode == 40) {
+        $this.next().focus();
+        return false;
+      } else if (e.keyCode == 38) {
+        $this.prev().focus();
+        return false;
+      }
+    })
+    .find("li")
+    .first()
+    .focus();
 }
 
 function getUrlVars() {

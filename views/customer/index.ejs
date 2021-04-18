@@ -61,6 +61,7 @@
         <!--Riding Lessons-->
         <div class="showcase-form card" id="ridingLesson">
           <h2>Get Riding Lessons</h2>
+          <p id="InvalidTime" style="display: none; color: brown;">Please Pick Correct Time!</p>
           <form action="/api/booking/riding" method="POST">
             <div class="form-control">
               <input type="text" name="firstname" placeholder="First Name" required>
@@ -291,3 +292,7 @@
 
   </body>
 </html>
+
+<script>
+  $("#"+getUrlVars().errType).show();
+</script>
