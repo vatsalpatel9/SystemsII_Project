@@ -34,10 +34,10 @@
         <div class="event-description">
 
           <p>Lesson For: <%= item.firstname%> <%= item.lastname %></p>
-          <p>Contact: <%= item.phone%></p>
           <p>Number of People: <%= item.numPeople %></p>
           <p>Duration: <%= item.duration%> hour</p>
-          <% if(item.days > new Date()) {%> -->
+          <p>payment Amount: $<%= item.paymentAmount%></p>
+          <% if(item.days > new Date()) {%>
           <button id=<%= item._id %>
             onclick="cancelRes(this.id, '<%= item.paymentAmount %>', '<%= item.paymentId %>')">Cancel
           </button>
