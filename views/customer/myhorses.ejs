@@ -9,7 +9,7 @@
 <body>
     <%- include("../common/navbar-customer") %>
     <h1 style="text-align: center;"><%= title %> | Horses</h1>
-    
+
     <div class="event-container">
         <!--Have to work solution for years-->
         <% lodgingDet.forEach(function(item){ %>
@@ -46,6 +46,11 @@
                     <p>Payment Amount: $<%= item.paymentAmount %></p>
                     <p>Payment Recived: <%= item.paymentStatus %></p>
                     <p>Payment Id: <%= item.paymentId %></p>
+                    <% if(item.startDay > new Date()) {%>
+                    <button id=<%= item._id %>
+                        onclick="cancelRes(this.id, '<%= item.paymentAmount %>', '<%= item.paymentId %>')">Cancel
+                    </button>
+                    <% } %>
                 </div>
             </div>
         </div>
@@ -83,7 +88,11 @@
                     <p>Payment Amount: $<%= item.paymentAmount %></p>
                     <p>Payment Recived: <%= item.paymentStatus %></p>
                     <p>Payment Id: <%= item.paymentId %></p>
-
+                    <% if(item.days > new Date()) {%>
+                    <button id=<%= item._id %>
+                        onclick="cancelRes(this.id, '<%= item.paymentAmount %>', '<%= item.paymentId %>')">Cancel
+                    </button>
+                    <% } %>
                 </div>
             </div>
         </div>
