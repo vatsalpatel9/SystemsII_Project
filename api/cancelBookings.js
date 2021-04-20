@@ -1,13 +1,14 @@
-var express = require("express");
-var Reservation = require("../models/ridingReserve");
-var Register = require("../models/registers");
-var Training = require("../models/horseTraining");
-var Lodging = require("../models/horseLodging");
-var nodemailer = require("nodemailer");
-require("dotenv").config();
-var router = express.Router();
+const express = require("express");
+const Reservation = require("../models/ridingReserve");
+const Register = require("../models/registers");
+const Training = require("../models/horseTraining");
+const Lodging = require("../models/horseLodging");
+const refundModel = require("../models/refundModel");
+const nodemailer = require("nodemailer");
+const router = express.Router();
 const SERVICE_TYPE = require("../misc/service_type");
 const { ApiError, Client, Environment } = require("square");
+require("dotenv").config();
 
 const accessToken = process.env.ACCESSTOKEN;
 const client = new Client({
@@ -75,6 +76,18 @@ router.post("/adminCancel", async (req, res) => {
         );
         break;
       }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    //--Log refunds
+    //////////////////////////////////////////////////////////////////////////////
+    try {
+      const refund_details = new refundModel({
+        response: response,
+      });
+      await refund_details.save();
+    } catch (error) {
+      res.status(400).send("Database Storage Failed: " + error);
     }
 
     //////////////////////////////////////////////////////////////////////////////
