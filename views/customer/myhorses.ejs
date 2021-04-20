@@ -47,8 +47,8 @@
                     <p>Payment Recived: <%= item.paymentStatus %></p>
                     <p>Payment Id: <%= item.paymentId %></p>
                     <% if(item.startDay > new Date()) {%>
-                    <button id=<%= item._id %>
-                        onclick="cancelRes(this.id, '<%= item.paymentAmount %>', '<%= item.paymentId %>')">Cancel
+                    <button id=<%= item._id %> 
+                        onclick="cancelRes(this.id, 'user', 'Lodging', '<%= item.paymentAmount %>','<%= item.paymentId %>','<%= item.userId %>')">Cancel
                     </button>
                     <% } %>
                 </div>
@@ -90,7 +90,7 @@
                     <p>Payment Id: <%= item.paymentId %></p>
                     <% if(item.days > new Date()) {%>
                     <button id=<%= item._id %>
-                        onclick="cancelRes(this.id, '<%= item.paymentAmount %>', '<%= item.paymentId %>')">Cancel
+                        onclick="cancelRes(this.id, 'user', 'Training', '<%= item.paymentAmount %>','<%= item.paymentId %>','<%= item.userId %>')">Cancel
                     </button>
                     <% } %>
                 </div>

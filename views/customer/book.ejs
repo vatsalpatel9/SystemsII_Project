@@ -39,7 +39,7 @@
           <p>payment Amount: $<%= item.paymentAmount%></p>
           <% if(item.days > new Date()) {%>
           <button id=<%= item._id %>
-            onclick="cancelRes(this.id, '<%= item.paymentAmount %>', '<%= item.paymentId %>')">Cancel
+            onclick="cancelRes(this.id, 'user', 'Riding', '<%= item.paymentAmount %>', '<%= item.paymentId %>','<%= item.userId %>')">Cancel
           </button>
           <% } %>
         </div>
