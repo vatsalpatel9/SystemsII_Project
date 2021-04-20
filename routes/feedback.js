@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
             message: req.body.Message
         });
         const received = await getFeedback.save();
-        res.redirect('/');
+        res.redirect('/?status=success');
     }catch(error){
         res.status(400).send(error);
     }
