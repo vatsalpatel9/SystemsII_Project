@@ -338,8 +338,14 @@ router.post("/payment", async (req, res) => {
     var mailOptions = {
       from: process.env.EMAIL,
       to: userId.email,
-      subject: "Payment Conformation",
-      text: "Recipt Url for your " + service + response.result.payment.receiptUrl,
+      subject: "Payment confirmation",
+      text: `Hello ${userId.firstname}, 
+             Thank you for using Hoof Hearted Stables services. Here is confirmation detials for your
+             upcoming reservation.\n
+             Your reservation confirmation code is: ${response.result.payment.receiptNumber}\n
+             Your payment of amount ${response.result.payment.amountMoney.paymentAmount}\n
+             Recipt Url for your reservation payment: \n ${response.result.payment.receiptUrl}
+             \nThank you for choosing Hoof Hearted Stables!`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
