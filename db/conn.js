@@ -1,4 +1,3 @@
-const { connect } = require("mongodb");
 const mongoose = require("mongoose");
 require('dotenv').config();
 
