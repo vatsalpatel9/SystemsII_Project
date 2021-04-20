@@ -228,9 +228,11 @@ function getUrlVars() {
 //////////////////////////////////////////////////////////////////////////
 // --Cancel Reservation Script
 //////////////////////////////////////////////////////////////////////////
-function cancelRes(reservationId, paymentAmount, paymentID) {
+function cancelRes(reservationId, service, paymentAmount, paymentID, userId) {
   console.log(reservationId);
   console.log(paymentAmount);
+  console.log(userId);
+  console.log(service);
   const idempotency_key = uuidv4();
   fetch("/api/cancelBookings/adminCancel", {
     method: "POST",
@@ -243,6 +245,8 @@ function cancelRes(reservationId, paymentAmount, paymentID) {
       amount: paymentAmount,
       id: paymentID,
       idempotency_key: idempotency_key,
+      userId: userId,
+      service: service
     }),
   })
     .catch((err) => {
@@ -258,6 +262,7 @@ function cancelRes(reservationId, paymentAmount, paymentID) {
     })
     .then((data) => {
       alert("Cancel Success!");
+      location.href = `/secret/${service}Reserve`;
     });
 }
 

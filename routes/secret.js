@@ -6,7 +6,15 @@ const Feedback = require("../models/feedback");
 
 var router = express.Router();
 
-router.get("/ridingReserve", async (req, res) => {
+router.get("/RidingReserve", async (req, res) => {
+    var today = new Date();
+    today.setHours(-5,0,0,0);
+    console.log(today);
+    Reservation.find( {days: today} , function (err, result) {
+      if (err) throw err;
+      console.log(result);
+    }).countDocuments();
+
   Reservation.find(function (err, allDetails) {
     if (err) {
       console.log(err);
@@ -19,7 +27,7 @@ router.get("/ridingReserve", async (req, res) => {
   });
 });
 
-router.get("/trainingReserve", async(req, res) => {
+router.get("/TrainingReserve", async(req, res) => {
   Training.find(function (err, allDetails){
     if (err) {
       console.log(err);
@@ -32,7 +40,7 @@ router.get("/trainingReserve", async(req, res) => {
   });
 });
 
-router.get("/lodingReserve", async(req, res) => {
+router.get("/LodingReserve", async(req, res) => {
     Lodging.find(function (err, allLodgings){
       if(err){
         console.log(err);

@@ -6,5 +6,6 @@ router
   .use("/signup", require("./signup"))
   .use("/booking", require("./booking"))
   .use("/changePass", require("./changePass"))
+  .use("/cancelBookings", require("./cancelBookings"))
 
 module.exports = router;
