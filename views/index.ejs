@@ -1,190 +1,202 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>  
-    <%- include("./common/header")%>
-  </head>
 
-  <body>
-    <!--Add NavBar-->
-    <%- include("./common/navbar-main.ejs")%>
+<head>
+  <title><%= title %></title>
+  <%- include("./common/header")%>
+</head>
 
-    <!-- Showcase -->
-    <section class="sectionIndicator showcase" id="home">
-      <div class="container grid">
-        <div class="showcase-text">
-          <h1>What We Do</h1>
+<body>
+  <!--Add NavBar-->
+  <%- include("./common/navbar-main.ejs")%>
+
+  <!-- Showcase -->
+  <section class="sectionIndicator showcase" id="home">
+    <div class="container grid">
+      <div class="showcase-text">
+        <h1>What We Do</h1>
+        <p>
+          Hoof Hearted Stables offers horse lodging and care for owners in arkansas or out of state.
+          All costs for boarding horses include the cost of grain and hay. All horses are groomed weekly
+          and exercise in our ten-acre fields daily.
+        </p>
+        <a href="#about" class="btn-link">Read More</a>
+      </div>
+
+      <div class="showcase-form card">
+        <h2>Create Account</h2>
+        <form action="/api/signup" method="POST">
+          <div class="form-control">
+            <input type="text" name="firstname" placeholder="First Name" required>
+          </div>
+          <div class="form-control">
+            <input type="text" name="lastname" placeholder="Last Name" required>
+          </div>
+          <div class="form-control">
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="form-control">
+            <input type="phone" name="phone" placeholder="Phone" required>
+          </div>
+          <div class="form-control">
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+          <div class="form-control">
+            <input type="password" name="confirmpassword" placeholder="Confirm Password" required>
+          </div>
+          <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!--About Page-->
+  <section class="sectionIndicator" id="about">
+    <div class="w3-container" style="padding:108px 16px">
+      <h3 class="w3-center">ABOUT THE COMPANY</h3>
+      <p class="w3-center w3-large">Key features of our company</p>
+      <div class="w3-row-padding w3-center" style="margin-top:64px">
+        <div class="w3-quarter" style="margin-top:20px">
+          <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+          <p class="w3-large">Responsive</p>
+          <ul>
+            <li>Contacts through IM or phone are responded to instantly.</li>
+            <li>.</li>
+            <li>Email/messages sent through website are checked daily and responded to within 24 hours.</li>
+          </ul>
+        </div>
+        <div class="w3-quarter" style="margin-top:20px">
+          <i class="fa fa-hat-cowboy fa-3x w3-margin-bottom w3-jumbo"></i>
+          <p class="w3-large">Passionate</p>
+          <ul>
+            <li>The owner has always had a passion for horses and noticed the lack of boarding for horses in Arkansas.
+            </li>
+            <li>.</li>
+            <li>The biggest goal of this business was to fix this issue by creating a loving place for horses to grow.
+            </li>
+          </ul>
+        </div>
+        <div class="w3-quarter" style="margin-top:20px">
+          <i class="fa fa-horse-head w3-margin-bottom w3-jumbo"></i>
+          <p class="w3-large">Horses</p>
+          <ul>
+            <li>All horses entering the property are required to have a current coggins report.*</li>
+            <li>.</li>
+            <li style="font-size:12px;">*If there is no current coggins report, we can quarantine the
+              horse off in the stables until one is recieved. If one is not recieved after 2 weeks, one will be made for
+              the horse and a personal fee will be
+              applied to the owner of the horse.</li>
+          </ul>
+        </div>
+        <div class="w3-quarter" style="margin-top:20px">
+          <i class="fa fa-hand-holding-medical w3-margin-bottom w3-jumbo"></i>
+          <p class="w3-large">Care</p>
+          <ul>
+            <li>All horses groomed weekly, exercise in fields daily, and are fed twice a day.</li>
+            <li>.</li>
+            <li>If they are ever sick, we will always do our best to treat their sickness.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Services Page-->
+  <section class="sectionIndicator" id="services">
+    <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
+      <h3>SERVICES OFFERED</h3>
+      <p class="w3-large slide">Reserve a place for your horse or schedule horse riding lessons.</p>
+      <div class="w3-row-padding" style="margin-top:64px">
+        <div class="w3-quarter w3-section">
+          <ul class="w3-ul w3-white w3-hover-shadow">
+            <li class="w3-black w3-xlarge w3-padding-32">Pasture Horses</li>
+            <li class="w3-padding-16"><b>Grain and Hay</b> Included</li>
+            <li class="w3-padding-16"><b>Unlimited</b> Visits</li>
+            <li class="w3-padding-16"><b>Daily</b> Grooming</li>
+            <li class="w3-padding-16"><b>10 Acres</b> of land</li>
+            <li class="w3-padding-16">
+              <h2 class="w3-wide">$ 250</h2>
+              <span class="w3-opacity">per month</span>
+            </li>
+          </ul>
+        </div>
+        <div class="w3-quarter w3-section">
+          <ul class="w3-ul w3-white w3-hover-shadow">
+            <li class="w3-red w3-xlarge w3-padding-32">Riding Lesson</li>
+            <li class="w3-padding-16"><b>Experienced</b> Trainer</li>
+            <li class="w3-padding-16"><b>Well Trained</b> Horses</li>
+            <li class="w3-padding-16"><b>Personalized</b> Sessions</li>
+            <li class="w3-padding-16"><b>1:1</b> Guidance</li>
+            <li class="w3-padding-16">
+              <h2 class="w3-wide">$ 70</h2>
+              <span class="w3-opacity">per hour</span>
+            </li>
+          </ul>
+        </div>
+        <div class="w3-quarter w3-section">
+          <ul class="w3-ul w3-white w3-hover-shadow">
+            <li class="w3-red w3-xlarge w3-padding-32">Horse Training</li>
+            <li class="w3-padding-16"><b>Experienced</b> Trainer</li>
+            <li class="w3-padding-16"><b>Weekly</b> Sessions</li>
+            <li class="w3-padding-16"><b>Effective</b> Training</li>
+            <li class="w3-padding-16"><b>Ensured</b> Care</li>
+            <li class="w3-padding-16">
+              <h2 class="w3-wide">$ 100</h2>
+              <span class="w3-opacity">per hour</span>
+            </li>
+          </ul>
+        </div>
+        <div class="w3-quarter w3-section">
+          <ul class="w3-ul w3-white w3-hover-shadow">
+            <li class="w3-black w3-xlarge w3-padding-32">Stabled Horses</li>
+            <li class="w3-padding-16"><b>Grain and Hay</b> Included</li>
+            <li class="w3-padding-16"><b>Unlimited</b> Visits</li>
+            <li class="w3-padding-16"><b>Daily</b> Grooming</li>
+            <li class="w3-padding-16"><b>Clean</b> Stalls</li>
+            <li class="w3-padding-16">
+              <h2 class="w3-wide">$ 300</h2>
+              <span class="w3-opacity">per month</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="w3-large">All services have endless support for those who request it.</p>
+    </div>
+  </section>
+
+  <!--Contact Page-->
+  <section class="sectionIndicator showcase-contact" id="contact">
+    <div class="bg-image"></div>
+    <div class="showcase-form card overlay" style="position: relative;" id="contact">
+      <h3 class="w3-center">CONTACT</h3>
+      <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+      <div style="margin-top:48px">
+        <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Location: 2315 MC 6064 Flippin, AR</p>
+        <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +1 870-656-7359</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: hoofheartedstables@gmail.com</p>
+        <br>
+        <form action="/feedback" method="POST">
+          <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
           <p>
-            Hoof Hearted Stables offers horse lodging and care for owners in arkansas or out of state. 
-            All costs for boarding horses include the cost of grain and hay. All horses are groomed weekly
-            and exercise in our ten-acre fields daily.
+            <button class="w3-button w3-black" type="submit">
+              <i class="fa fa-paper-plane"></i> SEND MESSAGE
+            </button>
           </p>
-          <a href="#about" class="btn-link">Read More</a>
-        </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>
 
-        <div class="showcase-form card">
-          <h2>Create Account</h2>
-            <form action="/api/signup" method="POST">
-              <div class="form-control">
-                <input type="text" name="firstname" placeholder="First Name" required>
-              </div>
-              <div class="form-control">
-                <input type="text" name="lastname" placeholder="Last Name" required>
-              </div>
-              <div class="form-control">
-                <input type="email" name="email" placeholder="Email" required>
-              </div>
-              <div class="form-control">
-                <input type="phone" name="phone" placeholder="Phone" required>
-              </div>
-              <div class="form-control">
-                <input type="password" name="password" placeholder="Password" required>
-              </div>
-              <div class="form-control">
-                <input type="password" name="confirmpassword" placeholder="Confirm Password" required>
-              </div>
-              <input type="submit" value="Submit" class="btn btn-primary">
-            </form>
-        </div>
-      </div>
-    </section>
-    
-    <!--About Page-->
-    <section class="sectionIndicator" id="about">
-      <div class="w3-container" style="padding:108px 16px">
-        <h3 class="w3-center">ABOUT THE COMPANY</h3>
-        <p class="w3-center w3-large">Key features of our company</p>
-          <div class="w3-row-padding w3-center" style="margin-top:64px">
-            <div class="w3-quarter" style="margin-top:20px">
-              <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
-              <p class="w3-large">Responsive</p>
-              <ul>
-                <li>Contacts through IM or phone are responded to instantly.</li>
-                <li>.</li>
-                <li>Email/messages sent through website are checked daily and responded to within 24 hours.</li>
-              </ul>
-            </div>
-            <div class="w3-quarter" style="margin-top:20px">
-              <i class="fa fa-hat-cowboy fa-3x w3-margin-bottom w3-jumbo"></i>
-              <p class="w3-large">Passionate</p>
-              <ul>
-                <li>The owner has always had a passion for horses and noticed the lack of boarding for horses in Arkansas.</li>
-                <li>.</li>
-                <li>The biggest goal of this business was to fix this issue by creating a loving place for horses to grow.</li>
-              </ul>
-            </div>
-            <div class="w3-quarter" style="margin-top:20px">
-              <i class="fa fa-horse-head w3-margin-bottom w3-jumbo"></i>
-              <p class="w3-large">Horses</p>
-              <ul>
-                <li>All horses entering the property are required to have a current coggins report.*</li>
-                <li>.</li>
-                <li style="font-size:12px;">*If there is no current coggins report, we can quarantine the 
-                  horse off in the stables until one is recieved. If one is not recieved after 2 weeks, one will be made for the horse and a personal fee will be 
-                  applied to the owner of the horse.</li>
-              </ul>
-            </div>
-            <div class="w3-quarter" style="margin-top:20px">
-              <i class="fa fa-hand-holding-medical w3-margin-bottom w3-jumbo"></i>
-              <p class="w3-large">Care</p>
-              <ul>
-                <li>All horses groomed weekly, exercise in fields daily, and are fed twice a day.</li>
-                <li>.</li>
-                <li>If they are ever sick, we will always do our best to treat their sickness.</li>
-              </ul>
-            </div>
-          </div>
-      </div>
-    </section>
-  
-    <!--Services Page-->  
-    <section class="sectionIndicator" id="services">
-      <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
-        <h3>SERVICES OFFERED</h3>
-        <p class="w3-large slide">Reserve a place for your horse or schedule horse riding lessons.</p>
-        <div class="w3-row-padding" style="margin-top:64px">
-          <div class="w3-quarter w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-              <li class="w3-black w3-xlarge w3-padding-32">Pasture Horses</li>
-              <li class="w3-padding-16"><b>Grain and Hay</b> Included</li>
-              <li class="w3-padding-16"><b>Unlimited</b> Visits</li>
-              <li class="w3-padding-16"><b>Daily</b> Grooming</li>
-              <li class="w3-padding-16"><b>10 Acres</b> of land</li>
-              <li class="w3-padding-16">
-                <h2 class="w3-wide">$ 250</h2>
-                <span class="w3-opacity">per month</span>
-              </li>
-            </ul>
-          </div>
-          <div class="w3-quarter w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-              <li class="w3-red w3-xlarge w3-padding-32">Riding Lesson</li>
-              <li class="w3-padding-16"><b>Experienced</b> Trainer</li>
-              <li class="w3-padding-16"><b>Well Trained</b> Horses</li>
-              <li class="w3-padding-16"><b>Personalized</b> Sessions</li>
-              <li class="w3-padding-16"><b>1:1</b> Guidance</li>
-              <li class="w3-padding-16">
-                <h2 class="w3-wide">$ 70</h2>
-                <span class="w3-opacity">per hour</span>
-              </li>
-            </ul>
-          </div>
-          <div class="w3-quarter w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-              <li class="w3-red w3-xlarge w3-padding-32">Horse Training</li>
-              <li class="w3-padding-16"><b>Experienced</b> Trainer</li>
-              <li class="w3-padding-16"><b>Weekly</b> Sessions</li>
-              <li class="w3-padding-16"><b>Effective</b> Training</li>
-              <li class="w3-padding-16"><b>Ensured</b> Care</li>
-              <li class="w3-padding-16">
-                <h2 class="w3-wide">$ 100</h2>
-                <span class="w3-opacity">per hour</span>
-              </li>
-            </ul>
-          </div>
-          <div class="w3-quarter w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-              <li class="w3-black w3-xlarge w3-padding-32">Stabled Horses</li>
-              <li class="w3-padding-16"><b>Grain and Hay</b> Included</li>
-              <li class="w3-padding-16"><b>Unlimited</b> Visits</li>
-              <li class="w3-padding-16"><b>Daily</b> Grooming</li>
-              <li class="w3-padding-16"><b>Clean</b> Stalls</li>
-              <li class="w3-padding-16">
-                <h2 class="w3-wide">$ 300</h2>
-                <span class="w3-opacity">per month</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <p class="w3-large">All services have endless support for those who request it.</p>
-      </div>
-    </section>
-
-    <!--Contact Page-->
-    <section class="sectionIndicator showcase-contact" id="contact">
-      <div class="bg-image"></div>
-       <div class="showcase-form card overlay" style="position: relative;"
-         id="contact">
-         <h3 class="w3-center">CONTACT</h3>
-         <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
-         <div style="margin-top:48px">
-           <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Location: 2315 MC 6064 Flippin, AR</p>
-           <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +1 870-656-7359</p>
-           <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: hoofheartedstables@gmail.com</p>
-           <br>
-           <form action="/feedback" method="POST">
-             <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-             <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-             <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-             <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
-             <p>
-               <button class="w3-button w3-black" type="submit">
-                 <i class="fa fa-paper-plane"></i> SEND MESSAGE
-               </button>
-             </p>
-           </form>
-         </div>
-       </div>
-    </section>
-  </body>
 </html>
+
+<script>
+  $(function () {
+    if (getUrlVars().status === 'success') {
+      alert("Message Sent Successfully!");
+    }
+  });
+</script>

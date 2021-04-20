@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <%- include("../common/header")%>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-    <script type="text/javascript">
-      var datefield = document.createElement("input")
-      datefield.setAttribute("type", "date")
-      if (datefield.type !=
-        "date") { //if browser doesn't support input type="date", load files for jQuery UI Date Picker
-        document.write(
-          '<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n'
-          )
-        document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"><\/script>\n')
-        document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"><\/script>\n')
-      }
-    </script>
 
-    <script>
-      if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
-        jQuery(function ($) { //on document.ready
-          $('#days').datepicker();
-        })
-      }
+<head>
+  <title><%= title %></title>
+  <%- include("../common/header")%>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+  <script type="text/javascript">
+    var datefield = document.createElement("input")
+    datefield.setAttribute("type", "date")
+    if (datefield.type !=
+      "date") { //if browser doesn't support input type="date", load files for jQuery UI Date Picker
+      document.write(
+        '<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n'
+      )
+      document.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"><\/script>\n')
+      document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"><\/script>\n')
+    }
+  </script>
 
-      $(document).ready(function () {
-        $(".timepicker").timepicker({
+  <script>
+    if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
+      jQuery(function ($) { //on document.ready
+        $('#days').datepicker();
+      })
+    }
+
+    $(document).ready(function () {
+      $(".timepicker").timepicker({
         timeFormat: "h:mm p",
         interval: 60,
         minTime: "10",
@@ -36,278 +37,285 @@
         dynamic: false,
         dropdown: true,
         scrollbar: true,
-        });
-
       });
 
-    </script>
-  </head>
-  <body>
-    <%- include("../common/navbar-customer") %>
-    <section class="sectionIndicator showcase" id="home">
-      <div class="container grid">
-        <div class="showcase-text">
-          <h1 class="slide">Welcome <%= username.firstname %></h1>
-          <p>What would you like to reserve...</p>
-          <div>
-            <select id="serviceSelector" autocomplete="off">
-              <option value="ridingLesson">Riding Lesson</option>
-              <option value="horseTraining">Horse Training</option>
-              <option value="horseLodging">Horse Lodging</option>
+    });
+  </script>
+</head>
+
+<body>
+  <%- include("../common/navbar-customer") %>
+  <section class="sectionIndicator showcase" id="home">
+    <div class="container grid">
+      <div class="showcase-text">
+        <h1 class="slide">Welcome <%= username.firstname %></h1>
+        <p>What would you like to reserve...</p>
+        <div>
+          <select id="serviceSelector" autocomplete="off">
+            <option value="ridingLesson">Riding Lesson</option>
+            <option value="horseTraining">Horse Training</option>
+            <option value="horseLodging">Horse Lodging</option>
+          </select>
+        </div>
+      </div>
+
+      <!--Riding Lessons-->
+      <div class="showcase-form card" id="ridingLesson">
+        <h2>Get Riding Lessons</h2>
+        <p id="InvalidTime" style="display: none; color: brown;">Please Pick Correct Time!</p>
+        <form action="/api/booking/riding" method="POST">
+          <div class="form-control">
+            <input type="text" name="firstname" placeholder="First Name" value="<%= username.firstname %>" required>
+          </div>
+          <div class="form-control">
+            <input type="text" name="lastname" placeholder="Last Name" value="<%= username.lastname %>" required>
+          </div>
+          <div class="form-control">
+            <input type="phone" name="phone" placeholder="Phone" value="<%= username.phone %>" required>
+          </div>
+          <div class="form-control">
+            <input type="text" name="numPeople" placeholder="Number of Riders" required>
+          </div>
+          <div class="form-control">
+            <input type="date" name="days" id="days" class="days" placeholder="Pick a Date" required>
+          </div>
+          <div class="parent">
+            <div class="form-control-time-left">
+              <input type="text" class="timepicker" id="startTime" name="StartTime" placeholder="Pick a Start Time"
+                required>
+            </div>
+            <div class="form-control-time-right">
+              <input type="text" class="timepicker" id="endTime" name="EndTime" placeholder="Pick a End Time" required>
+            </div>
+          </div>
+          <input type="submit" value="Let's Ride" class="btn btn-primary">
+        </form>
+      </div>
+
+      <!--Horse Training-->
+      <div class="showcase-form card" id="horseTraining" style="display:none;">
+        <h2>Horse Training</h2>
+        <form action="/api/booking/training" method="POST">
+          <div class="form-control">
+            <input type="text" name="firstname" placeholder="First Name" value="<%= username.firstname %>" required>
+          </div>
+          <div class="form-control">
+            <input type="text" name="lastname" placeholder="Last Name" value="<%= username.lastname %>" required>
+          </div>
+          <div class="form-control">
+            <input type="phone" name="phone" placeholder="Phone" value="<%= username.phone %>" required>
+          </div>
+          <div class="form-control">
+            <input type="text" name="horsename" placeholder="Horse Name" required>
+            </input>
+          </div>
+          <div class="form-control">
+            <input type="date" name="days" id="days" class="days" placeholder="Pick a Date" required>
+          </div>
+          <div class="parent">
+            <div class="form-control-time-left">
+              <input type="text" class="timepicker" id="startTime" name="StartTime" placeholder="Pick a Start Time"
+                required>
+            </div>
+            <div class="form-control-time-right">
+              <input type="text" class="timepicker" id="endTime" name="EndTime" placeholder="Pick a End Time" required>
+            </div>
+          </div>
+          <input type="submit" value="Let's Ride" class="btn btn-primary">
+        </form>
+      </div>
+
+      <!--Horse Lodging-->
+      <div class="showcase-form card" id="horseLodging" style="display:none;">
+        <h2>Horse Lodging</h2>
+        <form action="/api/booking/loding" method="POST">
+          <div class="form-control">
+            <input type="text" name="firstname" placeholder="First Name" value="<%= username.firstname %>" required>
+          </div>
+          <div class="form-control">
+            <input type="text" name="lastname" placeholder="Last Name" value="<%= username.lastname %>" required>
+          </div>
+          <div class="form-control">
+            <input type="phone" name="phone" placeholder="Phone" value="<%= username.phone %>" required>
+          </div>
+          <div class="form-control">
+            <h6>Horse Type: </h6>
+            <select name="horsetype">
+              <option value="stable">Stable</option>
+              <option value="pasture">Pasture</option>
             </select>
           </div>
-        </div>
-
-        <!--Riding Lessons-->
-        <div class="showcase-form card" id="ridingLesson">
-          <h2>Get Riding Lessons</h2>
-          <p id="InvalidTime" style="display: none; color: brown;">Please Pick Correct Time!</p>
-          <form action="/api/booking/riding" method="POST">
-            <div class="form-control">
-              <input type="text" name="firstname" placeholder="First Name" value="<%= username.firstname %>" required>
-            </div>
-            <div class="form-control">
-              <input type="text" name="lastname" placeholder="Last Name" value="<%= username.lastname %>" required>
-            </div>
-            <div class="form-control">
-              <input type="phone" name="phone" placeholder="Phone" value="<%= username.phone %>" required>
-            </div>
-            <div class="form-control">
-              <input type="text" name="numPeople" placeholder="Number of Riders" required>
-            </div>
-           <div class="form-control">
-             <input type="date" name="days" id="days" class="days" placeholder="Pick a Date" required>
-           </div>
-           <div class="parent">
-             <div class="form-control-time-left">
-               <input type="text" class="timepicker" id="startTime" name="StartTime" placeholder="Pick a Start Time"
-                 required>
-             </div>
-             <div class="form-control-time-right">
-               <input type="text" class="timepicker" id="endTime" name="EndTime" placeholder="Pick a End Time" required>
-             </div>
+          <div class="form-control">
+            <input type="text" name="horseName" placeholder="Horse Name" required>
           </div>
-            <input type="submit" value="Let's Ride" class="btn btn-primary">
-          </form>
-        </div>
-
-        <!--Horse Training-->
-        <div class="showcase-form card" id="horseTraining" style="display:none;">
-          <h2>Horse Training</h2>
-          <form action="/api/booking/training" method="POST">
-            <div class="form-control">
-              <input type="text" name="firstname" placeholder="First Name" value="<%= username.firstname %>" required>
-            </div>
-            <div class="form-control">
-              <input type="text" name="lastname" placeholder="Last Name" value="<%= username.lastname %>" required>
-            </div>
-            <div class="form-control">
-              <input type="phone" name="phone" placeholder="Phone" value="<%= username.phone %>" required>
-            </div>
-            <div class="form-control">
-              <input type="text" name="horsename" placeholder="Horse Name" required>
-              </input>
-            </div>
-            <div class="form-control">
-              <input type="date" name="days" id="days" class="days" placeholder="Pick a Date" required>
-            </div>
-            <div class="parent">
-              <div class="form-control-time-left">
-                <input type="text" class="timepicker" id="startTime" name="StartTime" placeholder="Pick a Start Time"
-                  required>
-              </div>
-              <div class="form-control-time-right">
-                <input type="text" class="timepicker" id="endTime" name="EndTime" placeholder="Pick a End Time"
-                  required>
-              </div>
-            </div>
-            <input type="submit" value="Let's Ride" class="btn btn-primary">
-          </form>
-        </div>
-
-        <!--Horse Lodging-->
-        <div class="showcase-form card" id="horseLodging" style="display:none;">
-          <h2>Horse Lodging</h2>
-          <form action="/api/booking/loding" method="POST">
-            <div class="form-control">
-              <input type="text" name="firstname" placeholder="First Name" value="<%= username.firstname %>" required>
-            </div>
-            <div class="form-control">
-              <input type="text" name="lastname" placeholder="Last Name" value="<%= username.lastname %>" required>
-            </div>
-            <div class="form-control">
-              <input type="phone" name="phone" placeholder="Phone" value="<%= username.phone %>" required>
-            </div>
-            <div class="form-control">
-              <h6>Horse Type: </h6>
-              <select name="horsetype">
-                <option value="stable">Stable</option>
-                <option value="pasture">Pasture</option>
-              </select>
-            </div>
-            <div class="form-control">
-              <input type="text" name="horseName" placeholder="Horse Name" required>
-            </div>
-            <div class="form-control">
-                <p>Starting Month Date</p>
-                <input type="date" name="startDay" id="days" class="days" placeholder="Pick a Date" required>
-            </div>
-            <div class="form-control">
-              <p>Number of Months: </p>
-              <select name="months">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-            <input type="submit" value="Let's Ride" class="btn btn-primary">
-          </form>
-        </div>
-
+          <div class="form-control">
+            <p>Starting Month Date</p>
+            <input type="date" name="startDay" id="days" class="days" placeholder="Pick a Date" required>
+          </div>
+          <div class="form-control">
+            <p>Number of Months: </p>
+            <select name="months">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+          <input type="submit" value="Let's Ride" class="btn btn-primary">
+        </form>
       </div>
-    </section>
 
-    <!--About Page-->
-    <section class="sectionIndicator" id="about">
-      <div class="w3-container" style="padding:108px 16px">
-        <h3 class="w3-center">ABOUT THE COMPANY</h3>
-        <p class="w3-center w3-large">Key features of our company</p>
-          <div class="w3-row-padding w3-center" style="margin-top:64px">
-            <div class="w3-quarter" style="margin-top:20px">
-              <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
-              <p class="w3-large">Responsive</p>
-              <ul>
-                <li>Contacts through IM or phone are responded to instantly.</li>
-                <li>.</li>
-                <li>Email/messages sent through website are checked daily and responded to within 24 hours.</li>
-              </ul>
-            </div>
-            <div class="w3-quarter" style="margin-top:20px">
-              <i class="fa fa-hat-cowboy fa-3x w3-margin-bottom w3-jumbo"></i>
-              <p class="w3-large">Passionate</p>
-              <ul>
-                <li>The owner has always had a passion for horses and noticed the lack of boarding for horses in Arkansas.</li>
-                <li>.</li>
-                <li>The biggest goal of this business was to fix this issue by creating a loving place for horses to grow.</li>
-              </ul>
-            </div>
-            <div class="w3-quarter" style="margin-top:20px">
-              <i class="fa fa-horse-head w3-margin-bottom w3-jumbo"></i>
-              <p class="w3-large">Horses</p>
-              <ul>
-                <li>All horses entering the property are required to have a current coggins report.*</li>
-                <li>.</li>
-                <li style="font-size:12px;">*If there is no current coggins report, we can quarantine the 
-                  horse off in the stables until one is recieved. If one is not recieved after 2 weeks, one will be made for the horse and a personal fee will be 
-                  applied to the owner of the horse.</li>
-              </ul>
-            </div>
-            <div class="w3-quarter" style="margin-top:20px">
-              <i class="fa fa-hand-holding-medical w3-margin-bottom w3-jumbo"></i>
-              <p class="w3-large">Care</p>
-              <ul>
-                <li>All horses groomed weekly, exercise in fields daily, and are fed twice a day.</li>
-                <li>.</li>
-                <li>If they are ever sick, we will always do our best to treat their sickness.</li>
-              </ul>
-            </div>
-          </div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <!--Services Page-->  
-    <section class="sectionIndicator" id="services">
-      <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
-        <h3>SERVICES OFFERED</h3>
-        <p class="w3-large">Reserve a place for your horse or schedule horse riding lessons.</p>
-        <div class="w3-row-padding" style="margin-top:64px">
-          <div class="w3-quarter w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-              <li class="w3-black w3-xlarge w3-padding-32">Pasture Horses</li>
-              <li class="w3-padding-16"><b>Grain and Hay</b> Included</li>
-              <li class="w3-padding-16"><b>Unlimited</b> Visits</li>
-              <li class="w3-padding-16"><b>Daily</b> Grooming</li>
-              <li class="w3-padding-16"><b>10 Acres</b> of land</li>
-              <li class="w3-padding-16">
-                <h2 class="w3-wide">$ 250</h2>
-                <span class="w3-opacity">per month</span>
-              </li>
-            </ul>
-          </div>
-          <div class="w3-quarter w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-              <li class="w3-red w3-xlarge w3-padding-32">Riding Lesson</li>
-              <li class="w3-padding-16"><b>Experienced</b> Trainer</li>
-              <li class="w3-padding-16"><b>Well Trained</b> Horses</li>
-              <li class="w3-padding-16"><b>Personalized</b> Sessions</li>
-              <li class="w3-padding-16"><b>1:1</b> Guidance</li>
-              <li class="w3-padding-16">
-                <h2 class="w3-wide">$ 70</h2>
-                <span class="w3-opacity">per hour</span>
-              </li>
-            </ul>
-          </div>
-          <div class="w3-quarter w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-              <li class="w3-red w3-xlarge w3-padding-32">Horse Training</li>
-              <li class="w3-padding-16"><b>Experienced</b> Trainer</li>
-              <li class="w3-padding-16"><b>Weekly</b> Sessions</li>
-              <li class="w3-padding-16"><b>Effective</b> Training</li>
-              <li class="w3-padding-16"><b>Ensured</b> Care</li>
-              <li class="w3-padding-16">
-                <h2 class="w3-wide">$ 100</h2>
-                <span class="w3-opacity">per hour</span>
-              </li>
-            </ul>
-          </div>
-          <div class="w3-quarter w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-              <li class="w3-black w3-xlarge w3-padding-32">Stabled Horses</li>
-              <li class="w3-padding-16"><b>Grain and Hay</b> Included</li>
-              <li class="w3-padding-16"><b>Unlimited</b> Visits</li>
-              <li class="w3-padding-16"><b>Daily</b> Grooming</li>
-              <li class="w3-padding-16"><b>Clean</b> Stalls</li>
-              <li class="w3-padding-16">
-                <h2 class="w3-wide">$ 300</h2>
-                <span class="w3-opacity">per month</span>
-              </li>
-            </ul>
-          </div>
+  <!--About Page-->
+  <section class="sectionIndicator" id="about">
+    <div class="w3-container" style="padding:108px 16px">
+      <h3 class="w3-center">ABOUT THE COMPANY</h3>
+      <p class="w3-center w3-large">Key features of our company</p>
+      <div class="w3-row-padding w3-center" style="margin-top:64px">
+        <div class="w3-quarter" style="margin-top:20px">
+          <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+          <p class="w3-large">Responsive</p>
+          <ul>
+            <li>Contacts through IM or phone are responded to instantly.</li>
+            <li>.</li>
+            <li>Email/messages sent through website are checked daily and responded to within 24 hours.</li>
+          </ul>
         </div>
-        <p class="w3-large">All services have endless support for those who request it.</p>
+        <div class="w3-quarter" style="margin-top:20px">
+          <i class="fa fa-hat-cowboy fa-3x w3-margin-bottom w3-jumbo"></i>
+          <p class="w3-large">Passionate</p>
+          <ul>
+            <li>The owner has always had a passion for horses and noticed the lack of boarding for horses in Arkansas.
+            </li>
+            <li>.</li>
+            <li>The biggest goal of this business was to fix this issue by creating a loving place for horses to grow.
+            </li>
+          </ul>
+        </div>
+        <div class="w3-quarter" style="margin-top:20px">
+          <i class="fa fa-horse-head w3-margin-bottom w3-jumbo"></i>
+          <p class="w3-large">Horses</p>
+          <ul>
+            <li>All horses entering the property are required to have a current coggins report.*</li>
+            <li>.</li>
+            <li style="font-size:12px;">*If there is no current coggins report, we can quarantine the
+              horse off in the stables until one is recieved. If one is not recieved after 2 weeks, one will be made for
+              the horse and a personal fee will be
+              applied to the owner of the horse.</li>
+          </ul>
+        </div>
+        <div class="w3-quarter" style="margin-top:20px">
+          <i class="fa fa-hand-holding-medical w3-margin-bottom w3-jumbo"></i>
+          <p class="w3-large">Care</p>
+          <ul>
+            <li>All horses groomed weekly, exercise in fields daily, and are fed twice a day.</li>
+            <li>.</li>
+            <li>If they are ever sick, we will always do our best to treat their sickness.</li>
+          </ul>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!--Contact Page-->
-    <section class="sectionIndicator showcase-contact" id="contact">
-      <div class="bg-image"></div>
-       <div class="showcase-form card overlay" style="position: relative;"
-         id="contact">
-         <h3 class="w3-center">CONTACT</h3>
-         <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
-         <div style="margin-top:48px">
-           <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Location: 2315 MC 6064 Flippin, AR</p>
-           <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +1 870-656-7359</p>
-           <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: hoofheartedstables@gmail.com</p>
-           <br>
-           <form action="/action_page.php" target="_blank">
-             <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-             <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-             <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
-             <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
-             <p>
-               <button class="w3-button w3-black" type="submit">
-                 <i class="fa fa-paper-plane"></i> SEND MESSAGE
-               </button>
-             </p>
-           </form>
-         </div>
-       </div>
-    </section>
+  <!--Services Page-->
+  <section class="sectionIndicator" id="services">
+    <div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
+      <h3>SERVICES OFFERED</h3>
+      <p class="w3-large">Reserve a place for your horse or schedule horse riding lessons.</p>
+      <div class="w3-row-padding" style="margin-top:64px">
+        <div class="w3-quarter w3-section">
+          <ul class="w3-ul w3-white w3-hover-shadow">
+            <li class="w3-black w3-xlarge w3-padding-32">Pasture Horses</li>
+            <li class="w3-padding-16"><b>Grain and Hay</b> Included</li>
+            <li class="w3-padding-16"><b>Unlimited</b> Visits</li>
+            <li class="w3-padding-16"><b>Daily</b> Grooming</li>
+            <li class="w3-padding-16"><b>10 Acres</b> of land</li>
+            <li class="w3-padding-16">
+              <h2 class="w3-wide">$ 250</h2>
+              <span class="w3-opacity">per month</span>
+            </li>
+          </ul>
+        </div>
+        <div class="w3-quarter w3-section">
+          <ul class="w3-ul w3-white w3-hover-shadow">
+            <li class="w3-red w3-xlarge w3-padding-32">Riding Lesson</li>
+            <li class="w3-padding-16"><b>Experienced</b> Trainer</li>
+            <li class="w3-padding-16"><b>Well Trained</b> Horses</li>
+            <li class="w3-padding-16"><b>Personalized</b> Sessions</li>
+            <li class="w3-padding-16"><b>1:1</b> Guidance</li>
+            <li class="w3-padding-16">
+              <h2 class="w3-wide">$ 70</h2>
+              <span class="w3-opacity">per hour</span>
+            </li>
+          </ul>
+        </div>
+        <div class="w3-quarter w3-section">
+          <ul class="w3-ul w3-white w3-hover-shadow">
+            <li class="w3-red w3-xlarge w3-padding-32">Horse Training</li>
+            <li class="w3-padding-16"><b>Experienced</b> Trainer</li>
+            <li class="w3-padding-16"><b>Weekly</b> Sessions</li>
+            <li class="w3-padding-16"><b>Effective</b> Training</li>
+            <li class="w3-padding-16"><b>Ensured</b> Care</li>
+            <li class="w3-padding-16">
+              <h2 class="w3-wide">$ 100</h2>
+              <span class="w3-opacity">per hour</span>
+            </li>
+          </ul>
+        </div>
+        <div class="w3-quarter w3-section">
+          <ul class="w3-ul w3-white w3-hover-shadow">
+            <li class="w3-black w3-xlarge w3-padding-32">Stabled Horses</li>
+            <li class="w3-padding-16"><b>Grain and Hay</b> Included</li>
+            <li class="w3-padding-16"><b>Unlimited</b> Visits</li>
+            <li class="w3-padding-16"><b>Daily</b> Grooming</li>
+            <li class="w3-padding-16"><b>Clean</b> Stalls</li>
+            <li class="w3-padding-16">
+              <h2 class="w3-wide">$ 300</h2>
+              <span class="w3-opacity">per month</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="w3-large">All services have endless support for those who request it.</p>
+    </div>
+  </section>
 
-  </body>
+  <!--Contact Page-->
+  <section class="sectionIndicator showcase-contact" id="contact">
+    <div class="bg-image"></div>
+    <div class="showcase-form card overlay" style="position: relative;" id="contact">
+      <h3 class="w3-center">CONTACT</h3>
+      <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+      <div style="margin-top:48px">
+        <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Location: 2315 MC 6064 Flippin, AR</p>
+        <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +1 870-656-7359</p>
+        <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: hoofheartedstables@gmail.com</p>
+        <br>
+        <form action="/feedback" method="POST">
+          <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
+          <p>
+            <button class="w3-button w3-black" type="submit">
+              <i class="fa fa-paper-plane"></i> SEND MESSAGE
+            </button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</body>
+
 </html>
 
 <script>
-  $("#"+getUrlVars().errType).show();
+  $("#" + getUrlVars().errType).show();
+  $(function () {
+    if (getUrlVars().status === 'success') {
+      alert("Message Sent Successfully!");
+    }
+  });
 </script>
