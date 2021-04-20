@@ -17,4 +17,18 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.post('/delete/:id', async (req,res) => {
+    console.log(req.params.id);
+    try{
+        await Feedback.deleteOne({_id: req.params.id}, function(req, res, err){
+            if(err){
+                throw err;
+            }
+        });
+        res.redirect("/secret/feedback");
+    }catch(err){
+        res.status(400).send(error);
+    }
+})
+
 module.exports = router;
