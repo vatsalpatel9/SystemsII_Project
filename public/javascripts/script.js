@@ -224,3 +224,47 @@ function getUrlVars() {
   }
   return vars;
 }
+
+//////////////////////////////////////////////////////////////////////////
+// --Cancel Reservation Script
+//////////////////////////////////////////////////////////////////////////
+function cancelRes(reservationId, paymentAmount, paymentID) {
+  console.log(reservationId);
+  console.log(paymentAmount);
+  const idempotency_key = uuidv4();
+  fetch("/api/cancelBookings/adminCancel", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      reserveId: reservationId,
+      amount: paymentAmount,
+      id: paymentID,
+      idempotency_key: idempotency_key,
+    }),
+  })
+    .catch((err) => {
+      alert(err);
+    })
+    .then((response) => {
+      if (!response.ok) {
+        console.log("Response:", response);
+        return response.json().then((errorInfo) => Promise.reject(errorInfo));
+      }
+      console.log("Response:", response);
+      return response.json();
+    })
+    .then((data) => {
+      alert("Cancel Success!");
+    });
+}
+
+function uuidv4() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
