@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const session = require("express-session");
-require("./db/conn");
+const db = require("./db/conn");
 const bodyParser = require('body-parser');
 const MongoStore = require('connect-mongo')(session);
 require("dotenv").config();
@@ -47,6 +47,7 @@ app.use('/', require('./routes/'));
 app.use('/api/', require('./api/'));
 
 app.use('/rm-session', (req, res) => {
+    db.close;
     req.session.destroy();
     res.redirect('/');
 })

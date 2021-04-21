@@ -51,7 +51,7 @@
         <h1 class="slide">Welcome <%= username.firstname %></h1>
         <p>What would you like to reserve...</p>
         <div>
-          <select id="serviceSelector" autocomplete="off">
+          <select id="serviceSelector" autocomplete="on">
             <option value="ridingLesson">Riding Lesson</option>
             <option value="horseTraining">Horse Training</option>
             <option value="horseLodging">Horse Lodging</option>
@@ -88,7 +88,7 @@
               <input type="text" class="timepicker" id="endTime" name="EndTime" placeholder="Pick a End Time" required>
             </div>
           </div>
-          <input type="submit" value="Let's Ride" class="btn btn-primary">
+          <input type="submit" value="Reserve It!" class="btn btn-primary">
         </form>
       </div>
 
@@ -121,7 +121,7 @@
               <input type="text" class="timepicker" id="endTime" name="EndTime" placeholder="Pick a End Time" required>
             </div>
           </div>
-          <input type="submit" value="Let's Ride" class="btn btn-primary">
+          <input type="submit" value="Reserve It!" class="btn btn-primary">
         </form>
       </div>
 
@@ -160,7 +160,7 @@
               <option value="3">3</option>
             </select>
           </div>
-          <input type="submit" value="Let's Ride" class="btn btn-primary">
+          <input type="submit" value="Reserve It!" class="btn btn-primary">
         </form>
       </div>
 
@@ -316,7 +316,7 @@
   $(function () {
     if (getUrlVars().status === 'success') {
       alert("Message Sent Successfully!");
-    }else{
+    }else if(getUrlVars().status === 'fail'){
     alert("Please enter a vaild email!");
     }
   });
