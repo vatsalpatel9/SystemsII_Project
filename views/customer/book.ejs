@@ -38,7 +38,7 @@
           <p>Duration: <%= item.duration%> hour</p>
           <p>payment Amount: $<%= item.paymentAmount%></p>
           <% if(item.days > new Date()) {%>
-          <button id=<%= item._id %>
+          <button id=<%= item._id %> class="w3-button w3-blue"
             onclick="cancelRes(this.id, 'user', 'Riding', '<%= item.paymentAmount %>', '<%= item.paymentId %>','<%= item.userId %>')">Cancel
           </button>
           <% } %>

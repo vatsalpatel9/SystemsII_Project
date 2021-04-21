@@ -47,7 +47,7 @@
                     <p>Payment Recived: <%= item.paymentStatus %></p>
                     <p>Payment Id: <%= item.paymentId %></p>
                     <% if(item.startDay > new Date()) {%>
-                    <button id=<%= item._id %> 
+                    <button id=<%= item._id %> class="w3-button w3-blue"
                         onclick="cancelRes(this.id, 'user', 'Lodging', '<%= item.paymentAmount %>','<%= item.paymentId %>','<%= item.userId %>')">Cancel
                     </button>
                     <% } %>
@@ -89,7 +89,7 @@
                     <p>Payment Recived: <%= item.paymentStatus %></p>
                     <p>Payment Id: <%= item.paymentId %></p>
                     <% if(item.days > new Date()) {%>
-                    <button id=<%= item._id %>
+                    <button id=<%= item._id %> class="w3-button w3-blue"
                         onclick="cancelRes(this.id, 'user', 'Training', '<%= item.paymentAmount %>','<%= item.paymentId %>','<%= item.userId %>')">Cancel
                     </button>
                     <% } %>
