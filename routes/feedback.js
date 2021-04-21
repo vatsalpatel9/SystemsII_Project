@@ -3,18 +3,23 @@ const Feedback = require("../models/feedback");
 var router = express.Router();
 
 router.post('/', async (req, res) => {
-    try{
-        const getFeedback = new Feedback({
-            name: req.body.Name,
-            email: req.body.Email,
-            subject: req.body.Subject,
-            message: req.body.Message
-        });
-        const received = await getFeedback.save();
-        res.redirect('/?status=success');
-    }catch(error){
-        res.status(400).send(error);
-    }
+  // REGEX for email validation
+  if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(req.body.Email)) {
+    console.log("emailcheckworking");
+    return res.redirect(`/?status=fail`);
+  }
+  try {
+    const getFeedback = new Feedback({
+      name: req.body.Name,
+      email: req.body.Email,
+      subject: req.body.Subject,
+      message: req.body.Message,
+    });
+    const received = await getFeedback.save();
+    res.redirect("/?status=success");
+  } catch (error) {
+    res.status(400).send(error);
+  }
 });
 
 router.post('/delete/:id', async (req,res) => {
