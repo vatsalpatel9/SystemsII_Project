@@ -7,5 +7,6 @@ router
   .use("/booking", require("./booking"))
   .use("/changePass", require("./changePass"))
   .use("/cancelBookings", require("./cancelBookings"))
+  .use("/reply", require("./reply"))
 
 module.exports = router;
