@@ -12,7 +12,7 @@ router.get('/', async function(req, res) {
       const userName = await Register.findOne({ _id: usrId });
       var userType = userName.actype;
       if(userType === 0){
-        res.render("secret/index", {title: `Welcome Admin ${userName.firstname}`});
+        res.redirect(`/secret/main/${userName.firstname}`);
       }else{
         res.render("customer/index", { 
           title: `HHS | ${userName.firstname}`,
