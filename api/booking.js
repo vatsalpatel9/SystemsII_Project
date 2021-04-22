@@ -164,7 +164,7 @@ router.post("/loding", async (req, res) => {
   } else if (horseType === "pasture") {
     price = duration * 250;
   }
-  
+
 
   //Remove for production
   console.log("StartDate: " + startdate);
@@ -349,7 +349,7 @@ router.post("/payment", async (req, res) => {
              Thank you for using Hoof Hearted Stables services. Here is confirmation detials for your
              upcoming reservation.\n
              Your reservation confirmation code is: ${response.result.payment.receiptNumber}\n
-             Your payment of amount ${response.result.payment.amountMoney.paymentAmount}\n
+             Your payment of amount ${response.result.payment.amountMoney.amount}\n
              Recipt Url for your reservation payment: \n ${response.result.payment.receiptUrl}
              \nThank you for choosing Hoof Hearted Stables!`,
     };
