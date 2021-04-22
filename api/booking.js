@@ -104,6 +104,8 @@ router.post("/training", async (req, res) => {
   const subEnd = formattedEnd.substring(0, 2);
   const duration = subEnd - subStart;
   const price = duration * 100;
+  const d = new Date(date);
+  d.setHours(subStart, 0, 0, 0);
 
     if (subEnd <= subStart) {
       return res.redirect("/?errType=InvalidTime");
@@ -122,7 +124,7 @@ router.post("/training", async (req, res) => {
       lastname: req.body.lastname,
       phone: req.body.phone,
       horseName: req.body.horsename,
-      days: date,
+      days: d,
       startTime: req.body.StartTime,
       endTime: req.body.EndTime,
       duration: duration,
@@ -162,6 +164,7 @@ router.post("/loding", async (req, res) => {
   } else if (horseType === "pasture") {
     price = duration * 250;
   }
+  
 
   //Remove for production
   console.log("StartDate: " + startdate);
