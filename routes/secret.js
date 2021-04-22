@@ -7,7 +7,7 @@ var router = express.Router();
 
 router.get("/main/:user", async (req, res) => {
   const today = new Date();
-  today.setHours(-5,0,0,0);
+  today.setHours(0,0,0,0);
 
   const today1 = new Date();
   today1.setDate(today1.getDate()+1);
