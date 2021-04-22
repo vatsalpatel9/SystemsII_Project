@@ -54,7 +54,10 @@ router.post("/riding", async (req, res) => {
   const subEnd = formattedEnd.substring(0, 2);
   const duration = subEnd - subStart;
   const price = duration * 70;
-
+  //date.setHours(subStart,0,0,0);
+  const d = new Date(date);
+  d.setHours(subStart,0,0,0);
+  console.log(d);
   if (subEnd <= subStart){
     return res.redirect("/?errType=InvalidTime");
   }
@@ -71,7 +74,7 @@ router.post("/riding", async (req, res) => {
       lastname: req.body.lastname,
       phone: req.body.phone,
       numPeople: req.body.numPeople,
-      days: date,
+      days: d,
       startTime: req.body.StartTime,
       endTime: req.body.EndTime,
       duration: duration,

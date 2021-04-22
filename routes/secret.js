@@ -11,6 +11,7 @@ router.get("/main/:user", async (req, res) => {
 
   const today1 = new Date();
   today1.setDate(today1.getDate()+1);
+  today1.setHours(0,0,0,0);
 
   const nextWeek = new Date();
   nextWeek.setDate(nextWeek.getDate() + 7);
@@ -19,19 +20,20 @@ router.get("/main/:user", async (req, res) => {
   nextMonth.setDate(nextMonth.getDate() + 30);
 
     console.log(today);
+    console.log(today1);
 
   ////////////////////////////////////////////////////////////
   //--Get Riding reservation count for today
   ////////////////////////////////////////////////////////////
-  const ridingCount = await Reservation.find({ days: today }).countDocuments(
-    function (err, result) {
-      if (err) throw err;
-      return result;
-    }
-  );
+  const ridingCount = await Reservation.find({
+    days: { $gte: today, $lt: today1 },
+  }).countDocuments(function (err, result) {
+    if (err) throw err;
+    return result;
+  });
   const dailyREarning = await Reservation.aggregate([
     {
-      $match: { $and: [{ days: today }] },
+      $match: { $and: [{ days: { $gte: today, $lt: today1 } }] },
     },
     {
       $group: {
@@ -46,15 +48,15 @@ router.get("/main/:user", async (req, res) => {
   ////////////////////////////////////////////////////////////
   //--Get Training reservation count for today
   ////////////////////////////////////////////////////////////
-  const trainingCount = await Training.find({ days: today }).countDocuments(
-    function (err, result) {
-      if (err) throw err;
-      return result;
-    }
-  );
+  const trainingCount = await Training.find({
+    days: { $gte: today, $lt: today1 },
+  }).countDocuments(function (err, result) {
+    if (err) throw err;
+    return result;
+  });
   const dailyTEarning = await Training.aggregate([
     {
-      $match: { $and: [{ days: today }] },
+      $match: { $and: [{ days: { $gte: today, $lt: today1 } }] },
     },
     {
       $group: {
@@ -69,15 +71,15 @@ router.get("/main/:user", async (req, res) => {
   ////////////////////////////////////////////////////////////
   //--Get Lodging reservation count for today
   ////////////////////////////////////////////////////////////
-  const lodgingCount = await Lodging.find({ startDay: today }).countDocuments(
-    function (err, result) {
-      if (err) throw err;
-      return result;
-    }
-  );
+  const lodgingCount = await Lodging.find({
+    startDay: { $gte: today, $lt: today1 },
+  }).countDocuments(function (err, result) {
+    if (err) throw err;
+    return result;
+  });
   const dailyLEarning = await Lodging.aggregate([
     {
-      $match: { $and: [{ startDay: today }] },
+      $match: { $and: [{ startDay: { $gte: today, $lt: today1 } }] },
     },
     {
       $group: {
