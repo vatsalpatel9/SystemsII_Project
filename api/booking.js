@@ -332,7 +332,7 @@ router.post("/payment", async (req, res) => {
     //////////////////////////////////////////////////////////////////////////////
     //Mail conformation
     //////////////////////////////////////////////////////////////////////////////
-    const payment = response.result.payment.amountMoney.amount / 100;
+    const payment = parsedResponse.result.payment.amountMoney.amount / 100;
     var userId = await Register.findOne({ _id: req.session.user });
     var transporter = nodemailer.createTransport({
       service: "gmail",
@@ -348,7 +348,7 @@ router.post("/payment", async (req, res) => {
       subject: "Payment confirmation",
       text: `Hello ${userId.firstname}, 
              Thank you for using Hoof Hearted Stables services. Here is confirmation detials for your
-             upcoming reservation.\n
+             upcoming horse ${service} Reservation.\n
              Your reservation confirmation code is: ${response.result.payment.receiptNumber}\n
              Your payment of amount $${payment}\n
              Recipt Url for your reservation payment: \n ${response.result.payment.receiptUrl}
