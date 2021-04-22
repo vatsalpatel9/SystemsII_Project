@@ -121,7 +121,7 @@ router.post("/adminCancel", async (req, res) => {
             text: `Hello ${userName}, 
              Thank you for using Hoof Hearted Stables services. Sorry We have to cancel you
              reservation.\n
-             Please contact us at CONTACT INFO regarding any question. We are sorry for the inconvience. \n
+             Please contact us at +1(870)-656-7359 regarding any question. We are sorry for the inconvience. \n
              Your reservation cancel code is: ${refundId}\n
              You have been refunded $${refundAmount}\n
              \nThank you for choosing Hoof Hearted Stables!`,
@@ -147,7 +147,7 @@ router.post("/adminCancel", async (req, res) => {
              A refund will be issued with 3-5 business days.\n
              Your reservation cancel code is: ${refundId}\n
              You will be refunded $${refundAmount}\n
-             Please contact us at CONTACT INFO regarding any question.\n
+             Please contact us at +1(870)-656-7359 regarding any question.\n
              Thank you for choosing Hoof Hearted Stables!`;
 
         //////////////////////////////////////////////////////////////////////////////
