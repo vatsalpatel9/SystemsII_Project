@@ -3,12 +3,14 @@ const Reservation = require("../models/ridingReserve");
 const Lodging = require("../models/horseLodging");
 const Training = require("../models/horseTraining");
 const Feedback = require("../models/feedback");
-
 var router = express.Router();
 
 router.get("/main/:user", async (req, res) => {
   const today = new Date();
-  today.setHours(-5, 0, 0, 0);
+  today.setHours(-5,0,0,0);
+
+  const today1 = new Date();
+  today1.setDate(today1.getDate()+1);
 
   const nextWeek = new Date();
   nextWeek.setDate(nextWeek.getDate() + 7);
@@ -16,7 +18,7 @@ router.get("/main/:user", async (req, res) => {
   const nextMonth = new Date();
   nextMonth.setDate(nextMonth.getDate() + 30);
 
-  console.log(nextMonth);
+    console.log(today);
 
   ////////////////////////////////////////////////////////////
   //--Get Riding reservation count for today
@@ -27,6 +29,19 @@ router.get("/main/:user", async (req, res) => {
       return result;
     }
   );
+  const dailyREarning = await Reservation.aggregate([
+    {
+      $match: { $and: [{ days: today }] },
+    },
+    {
+      $group: {
+        _id: "null",
+        total: {
+          $sum: "$paymentAmount",
+        },
+      },
+    },
+  ]);
 
   ////////////////////////////////////////////////////////////
   //--Get Training reservation count for today
@@ -37,46 +52,108 @@ router.get("/main/:user", async (req, res) => {
       return result;
     }
   );
+  const dailyTEarning = await Training.aggregate([
+    {
+      $match: { $and: [{ days: today }] },
+    },
+    {
+      $group: {
+        _id: "null",
+        total: {
+          $sum: "$paymentAmount",
+        },
+      },
+    },
+  ]);
 
   ////////////////////////////////////////////////////////////
   //--Get Lodging reservation count for today
   ////////////////////////////////////////////////////////////
-  const lodgingCount = await Lodging.find({ startDays: today }).countDocuments(
+  const lodgingCount = await Lodging.find({ startDay: today }).countDocuments(
     function (err, result) {
       if (err) throw err;
       return result;
     }
   );
+  const dailyLEarning = await Lodging.aggregate([
+    {
+      $match: { $and: [{ startDay: today }] },
+    },
+    {
+      $group: {
+        _id: "null",
+        total: {
+          $sum: "$paymentAmount",
+        },
+      },
+    },
+  ]);
 
   ////////////////////////////////////////////////////////////
   //--Get Riding reservation count for Next Week
   ////////////////////////////////////////////////////////////
   const ridingCountWeek = await Reservation.find({
-    days: { $gte: today, $lt: nextWeek },
+    days: { $gte: today1, $lt: nextWeek },
   }).countDocuments(function (err, result) {
     if (err) throw err;
     return result;
   });
+  const ridingEarning = await Reservation.aggregate([
+    {
+      $match: { $and: [{ days: { $gte: today1, $lt: nextWeek } }] },
+    },
+    {
+      $group: {
+        _id: "null",
+        total: {
+          $sum: "$paymentAmount",
+        },
+      },
+    },
+  ]);
 
   ////////////////////////////////////////////////////////////
   //--Get Training reservation count for Next Week
   ////////////////////////////////////////////////////////////
   const trainingCountWeek = await Training.find({
-    days: { $gte: today, $lt: nextWeek },
+    days: { $gte: today1, $lt: nextWeek },
   }).countDocuments(function (err, result) {
     if (err) throw err;
     return result;
   });
+  const trainingEarning = await Training.aggregate([
+    {
+      $match: { $and: [{ days: { $gte: today1, $lt: nextWeek } }] },
+    },{$group:{
+      _id: 'null',
+      total: {
+        $sum: "$paymentAmount"
+      }
+    }}
+  ]);
 
   ////////////////////////////////////////////////////////////
   //--Get Riding reservation count for Next Week
   ////////////////////////////////////////////////////////////
   const lodgingCountWeek = await Lodging.find({
-    days: { $gte: today, $lt: nextWeek },
+    startDay: { $gte: today1, $lt: nextWeek },
   }).countDocuments(function (err, result) {
     if (err) throw err;
     return result;
   });
+  const lodgingEarning = await Lodging.aggregate([
+    {
+      $match: { $and: [{ startDay: { $gte: today1, $lt: nextWeek } }] },
+    },
+    {
+      $group: {
+        _id: "null",
+        total: {
+          $sum: "$paymentAmount",
+        },
+      },
+    },
+  ]);
 
   /*
   ////////////////////////////////////////////////////////////
@@ -117,6 +194,12 @@ router.get("/main/:user", async (req, res) => {
     ridingWeekNum: ridingCountWeek,
     trainingWeekNum: trainingCountWeek,
     lodgingWeekNum: lodgingCountWeek,
+    trainingEarning: trainingEarning,
+    lodgingEarning: lodgingEarning,
+    ridingEarning: ridingEarning,
+    dailyREarning: dailyREarning,
+    dailyTEarning: dailyTEarning,
+    dailyLEarning: dailyLEarning
   /*  ridingMonthNum: ridingCountMonth,
     trainingMonthNum: trainingCountMonth,
     lodgingMonthNum: lodgingCountMonth,*/
