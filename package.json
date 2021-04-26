@@ -24,6 +24,6 @@
     "nodemailer": "^6.5.0",
     "nodemon": "^2.0.7",
     "parsers": "^0.1.1",
-    "square": "^9.1.0"
+    "square": "^10.0.0"
   }
 }
